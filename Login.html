@@ -4,14 +4,14 @@
 	<head>
 		<body>
 			<style>
-				.logo  { position:relative; width:600px; height:50px; top:115px; left:700px }
-				.login { position:relative; width:800px; height:325px; top:100px; left:750px }
-				.table { position:absolute; top:0px; left:0px; bottom:0px; right:50px; }
+				.logo  { position:relative; width:600px; height:50px; top:115px; margin-left:auto; margin-right:auto; }
+				.login { position:relative; width:800px; height:325px; top:100px; margin-left:auto; margin-right:auto; }
+				.table { position:relative; top:0px; left:0px; bottom:0px; right:0px; align:left;}
 				.login { border:3px solid #a1a1a1;  width:400px; border-radius:10px; padding: 10px 10px; 
-				background-image:url('http://www.lettersmarket.com/uploads/lettersmarket/demo/background_gradient_basic/background_gradient_gray_10/background_gradient_gray_10_jpg_max.jpg');}
+				background-image:url('./img/box.jpg');}
 				td {height:10px; }
 				table {background:transparent;}
-				body { background-image:url('http://6269-9001.zippykid.netdna-cdn.com/wp-content/uploads/2013/11/White-Wallpapers.jpg'); }	
+				body { background-image:url('./img/wallpaper.jpg'); }	
 			</style>
 	</head> 
 	
@@ -25,59 +25,62 @@ UserID and Password*/
 			if (form.pass.value=="Kit") {              
 				location="page2.html" 
 			} else {
-				alert("Invalid Password")
+				alert("Invalid Credentials")
 			}
-		} else {  alert("Invalid UserID")
+		} else {  alert("Invalid Credentials")
 	}
 }
 	//-->
 	</script>
-	<h1 class="logo"><i>The Simplest Way To Stay Up To Date.</i></h1>
+	<h1 class="logo"><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Simplest Way To Stay Up To Date.</i></h1>
 		<div class="login">
 		<center>
-		<div class="table">
-		<center>		
+		<div class="table">		
 			<table>
 				<tr>				
 						<h2><i><b>Welcome Back!</b></i></h2>			
 				</tr>
 				<tr>
-					<td align="right" padding="5px">
+					<td align="right" width="100px">
 						<p><b>Username:</b></p>
 					</td>
-					<td>
-						<form name="login"><input name="id" type="text">
+					<td width="200px">
+						<form name="login">&nbsp;<input name="id" type="text">
 					</td>
+					<td width="60px"></td>
 				</tr>
 				<tr>
 					<td align="right">
 						<p><b>Password:</b></p>
 					</td>
 					<td>
-						<input name="pass" type="password">
+						&nbsp;<input name="pass" type="password">
 					</td>
+					<td></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td align="left">
-						<input type="button" value="Login" onClick="pasuser(this.form)">
+					<td align="center">
+						<input type="button" value="Login" onClick="pasuser(this.form)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>
 					</form>
+					<td></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td align="left">
-						<a href="#forgotpass">Forgot your password?</a>
+						&nbsp;&nbsp;&nbsp;<a href="#forgotpass">Forgot your password?</a>
 					</td>
+					<td></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td align="left">
 						<a href="#newaccount">Need to create an account?</a>
 					</td>
+					<td></td>
 				</tr>
 			</table>
-			</center>
 			</div>
 			</center>
 		</div>
