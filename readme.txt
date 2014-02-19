@@ -1,1 +1,0 @@
-This branch has been set up by Jordan Smith. It is supposed to work as a private repository that can be merged with the master branch.
