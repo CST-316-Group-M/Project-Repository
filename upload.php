@@ -26,7 +26,11 @@
 			}
 	}
 	
-	// class UploadTest extends PHPUnit {}
+	class UploadTest extends PHPUnit {
+		public function fileCheckTest() {
+			$this->assertFileExists('C:/Docs/test.txt');
+		}
+	}
 	// still working on setting up phpunit 
 	
 	$userFile = new Upload();
