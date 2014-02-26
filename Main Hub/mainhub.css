@@ -49,7 +49,31 @@
 			border-color: #000;
 			border: 2px solid;
 		}
-		.Navigation
-		{
+		#navbar ul 
+		{ 
+			position:absolute;
+			top: 100px;
+			margin: 0; 
+			padding: 5px; /* Set margin and padding for cross browser consistency. */ 
+			list-style-type: none; /* Needed to eliminate list item marker */ 
+			text-align: center; /* Centers navigation bar */ 
+			background-color: #000; /* Set as desired */ 
+		} 
 
-		}
+		#navbar ul li { 
+		/*display: ; /* Needed to create horizontal effect */ 
+		} 
+
+		#navbar ul li a 
+		{ 
+			text-decoration: none; /* The setting of "none" allows the link to not be underlined. This is up to user preference. */ 
+			padding: .2em 1em; /* Gives the link space inside it's individual block. */ 
+			color: #fff; /* Set as desired */ 
+			background-color: #000; /* Set as desired */ 
+		} 
+
+		#navbar ul li a:hover 
+		{ 
+			color: #000; 
+			background-color: #fff; /* Both of these values create the "Rollover effect, Set as desired */ 
+		} 
