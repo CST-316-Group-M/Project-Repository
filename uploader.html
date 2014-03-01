@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<title>Proper Title</title>
+</head>
+    
+<body>
+	
+	<form id="myForm" method="post" enctype="multipart/form-data">
+
+        Public Store: <input type="file" id="files" name="Public Place" multiple><br/>
+
+        <div id="selectedFiles"></div>
+
+        <input type="submit">
+	</form>
+
+	
+	<form id="myForm1" method="post" enctype="multipart/form-data">
+
+        Private Store: <input type="file" id="files1" name="Private Place" multiple><br/>
+
+        <div id="selectedFiles"></div>
+
+        <input type="submit">
+	</form>
+	
+	<script>
+	var selDiv = "";
+		
+	document.addEventListener("DOMContentLoaded", init, false);
+	
+	function init() 
+	{
+		document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+		selDiv = document.querySelector("#selectedFiles");
+	}
+		
+	function handleFileSelect(e) {
+		
+		if(!e.target.files) return;
+		
+		selDiv.innerHTML = "";
+		
+		var files = e.target.files;
+		for(var i=0; i<files.length; i++) 
+		{
+			var f = files[i];
+			
+			selDiv.innerHTML += f.name + "<br/>";
+
+		}
+		
+	}
+	</script>
+</body>
+</html>
