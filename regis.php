@@ -12,7 +12,7 @@
 			<h1>Log In</h1>
 			<form method="post" action="regis.php">
 			<p>Username: <input type="text" name="name"></p>
-			<p>Password: <input type="Password" name="Password"></p>
+			<p>Password: <input type="assword" name="password"></p>
 			<p><input type="submit" name="submit" value="Log In"></p>
 			</form>
 		
@@ -51,6 +51,16 @@
 						echo "Query Successful!";
 						exit;
 					}
+					
+				$row = mysqli_fetch_row($result);
+				$count = $row[0];
+				
+				if ($count > 0) {
+					echo "You did it!";
+				}
+				else {
+					echo "Authentication failed.";
+				}
 			}
 		?>	
 		</body>
