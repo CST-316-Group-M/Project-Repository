@@ -39,16 +39,23 @@
             background-color: #2E2EFE;
 			bottom: 100px;
         }
-		.RepoMang
-		{
-			position:absolute;
-			width: 700px;
-			height:	350px;
-			top: 100px;
-			left: 150px;
-			border-color: #000;
-			border: 2px solid;
-		}
+		.repoTable 
+			{
+				position:absolute;
+				top:150px;
+				left:151px;
+				width: 702px;
+				height: auto;
+				border-width:5px;
+			}
+		
+		table,th,td
+			{
+				height: 35px;
+				border:1px solid black;
+				border-collapse:collapse;			
+				}
+
 		#navbar ul 
 		{ 
 			position:absolute;
