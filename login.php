@@ -1,7 +1,7 @@
 <html>
 	<body>
  	<?php 
-	
+			session_start();
 			$name = $_POST['name'];
 			$password = $_POST['password'];	
 			
@@ -10,7 +10,7 @@
 				
 		?>
 			<h1>Log In</h1>
-			<form method="post" action="regis.php">
+			<form method="post" action="user.php">
 			<p>Username: <input type="text" name="name"></p>
 			<p>Password: <input type="assword" name="password"></p>
 			<p><input type="submit" name="submit" value="Log In"></p>
@@ -64,6 +64,6 @@
 			}
 		?>	
 		<h1>Not registered?</h1>
-		<a href="http://localhost/regis.php/"><Make an account here.</a>
+		<a href="http://localhost/registration.php/"><Make an account here.</a>
 		</body>
 </html>
