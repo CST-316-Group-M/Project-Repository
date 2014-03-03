@@ -4,6 +4,8 @@
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
+		
+		if((!isset($name)) || (!isset($password))) {
 	?>
 		<h1>Almost There!</h1>
 		<b>We just need some information from you.</b>
@@ -14,6 +16,7 @@
 		<p><input type="submit" name="submit" value="Register"></p>
 	
 	<?php
+	} else {
 		//connect to database 
 				$con = mysqli_connect("localhost","webauth","webauth");		// webauth is a mysql username and password to access the table,
 					/*														// only has permission to run select query
@@ -34,11 +37,13 @@
 						echo "Could not select a database. ";
 						exit;
 					}
+					else {
+						echo "Database selected successfully!";
+					}
 					*/
+
+				$query = "insert into users(firstname, password, email) values('".$name."', '".$password."', '".$email."')";
 				
-				//query for correct user + password combo
-				$query = "select count(*) from users where firstname = '".$name."' and password = '".$password."'";
-					
 				$result = mysqli_query($con, $query);
 					/*
 					if (!$result) {
@@ -50,12 +55,14 @@
 						exit;
 					}
 					*/
+		}
 	?>
 	
 	<!-- 
 	
 	KNOWN ISSUES/NEEDED FEATURES
 	- ACCOUNT DUPLICATES
+	- FILTER INPUT
 	
 	-->
 	</body>
