@@ -9,7 +9,7 @@
 	?>
 		<h1>Almost There!</h1>
 		<b>We just need some information from you.</b>
-		<form method="post" action="regis.php">
+		<form method="post" action="registration.php">
 		<p>Name: <input type="text" name="name"></p>
 		<p>Password: <input type="password" name="password"></p>
 		<p>Email: <input type="email" name="email"></p>
@@ -57,7 +57,7 @@
 					*/
 		}
 	?>
-	
+	<h1>You've Successfully Registered!</h1>
 	<!-- 
 	
 	KNOWN ISSUES/NEEDED FEATURES
