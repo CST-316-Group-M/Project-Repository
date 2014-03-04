@@ -16,32 +16,18 @@ function pretty_filesize($file) {
     return $size;
 }
 
-date_default_timezone_set("Europe/Rome");
-
-// Checks to see if veiwing hidden files is enabled
-/*
-  if ($_SERVER['QUERY_STRING'] == "hidden") {
-    $hide = "";
-    $ahref = "./";
-    $atext = "Hide";
-  } else {
-
-    $hide = ".";
-    $ahref = "./?hidden";
-    $atext = "Show";
-  }
- */
+date_default_timezone_set("America/Phoenix");
 
 $hide = "Test";
 
 
 if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) {
-    $currdir = "../root System/jtsmit11/Public Repo";
+    $currdir = "../root System/jtsmit11/Private Repo";
 } else {
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
 
-if ($currdir == "../") 
+if ($currdir == "../root System/jtsmit11") 
     $label = "Root";
 else {
     $path = explode('/', $currdir);
@@ -235,5 +221,13 @@ for ($index = 0; $index < $indexCount; $index++) {
 
         <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
         </div>
+        
+  	<form action="upload_file.php" method="post"
+		enctype="multipart/form-data">
+		<label for="file">Filename:</label>
+		<input type="file" name="file" id="file"><br>
+		<input type="submit" name="submit" value="Submit">
+	</form>
+    
     </body>
 </html>
