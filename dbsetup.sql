@@ -1,23 +1,25 @@
-CREATE DATABASE auth;
+create database auth;
 
-CREATE USER webauth@localhost IDENTIFIED BY 'webauth';
+create user 'webauth'@'localhost' identified by 'webauth';
 
-USE auth;
+grant select on auth.* to 'webauth'@'localhost' identified by 'webauth';
+ 
+grant insert on auth.* to 'new'@'localhost' identified by 'new';  
 
-GRANT SELECT ON auth.* to webauth@localhost;
+use auth;
 
-CREATE TABLE users(firstname varchar(20), password varchar(16), primary key (firstname));
+create table users (first varchar(15), last varchar(20), password varchar(20), email varchar(30), primary key (email));
 
-INSERT INTO users(firstname, password) VALUES ('Lauren', 'password');
+insert into users values('Lauren', 'Krugen', 'password', 'Lauren@gmail.com');
 
-INSERT INTO users(firstname, password) VALUES ('Jordan', 'password');
+insert into users values('Jordan', 'Smith', 'password', 'Jordan@gmail.com');
 
-INSERT INTO users(firstname, password) VALUES ('Jason', 'password');
+insert into users values('Jason', 'Scribner', 'password', 'Jason@gmail.com');
 
-INSERT INTO users(firstname, password) VALUES ('Jacob', 'password');
+insert into users values('Jacob', 'Reber', 'password', 'Jacob@gmail.com');
 
-INSERT INTO users(firstname, password) VALUES ('Chris', 'password');
+insert into users values('Chris', 'McDonalds', 'password', 'Chris@gmail.com');
 
-INSERT INTO users(firstname, password) VALUES ('Eyaad', 'password');
-
+insert into users values('Eyaad', 'Allam', 'password', 'Eyaad@gmail.com');
+ 
 quit;
