@@ -93,7 +93,7 @@ window.onload = $(function() {
         pathLen -= 1;
       }
       if(singular) {
-        output.innerHTML += "<tr data-depth='0' class='type-" + ext + " collapse level0'><td><span class='child'></span>&nbsp&nbsp" + path + "</td></tr>";
+        output.innerHTML += "<tr><td><span class='type-" + ext + "'>&nbsp&nbsp&nbsp&nbsp&nbsp" + path + "</span></td></tr>";
       }
       else {
         if(i < (len - 1)) {
@@ -114,7 +114,7 @@ window.onload = $(function() {
         else {
           mother = "child";
         }
-        output.innerHTML += "<tr data-depth='" + (pathLen - 2) + "' class='collapse level" + (pathLen - 2) + "'><td>&nbsp<span class='" + mother + "'></span>&nbsp<span class='type-" + ext + "'>&nbsp&nbsp&nbsp&nbsp&nbsp" + path[pathLen - 1] + "</td></tr>";
+        output.innerHTML += "<tr data-depth='" + (pathLen - 2) + "' class='collapse level" + (pathLen - 2) + "'><td>&nbsp<span class='" + mother + "'></span>&nbsp<span class='type-" + ext + "'>&nbsp&nbsp&nbsp&nbsp&nbsp" + path[pathLen - 1] + "</span></td></tr>";
       }
     }
   }, false);
