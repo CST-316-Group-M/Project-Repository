@@ -93,7 +93,7 @@ window.onload = $(function() {
         pathLen -= 1;
       }
       if(singular) {
-        output.innerHTML += "<tr data-depth='0' class='type-" + ext + " collapse level0'><td><span class='child'></span>" + path + "</td></tr>";
+        output.innerHTML += "<tr data-depth='0' class='type-" + ext + " collapse level0'><td><span class='child'></span>&nbsp&nbsp" + path + "</td></tr>";
       }
       else {
         if(i < (len - 1)) {
