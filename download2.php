@@ -1,4 +1,10 @@
+
+
+
 <?php
+
+//This code lists all files in current directory (can be changed).
+//This skips "." and ".." for cleanliness
   if ($handle = opendir('.')) {
     while (false !== ($file = readdir($handle))) {
       if ($file != "." && $file != "..") {

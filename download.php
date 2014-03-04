@@ -1,6 +1,7 @@
 <?php
 
 // place this code inside a php file and call it f.e. "download.php"
+//more changes blah blah
 $path = $_SERVER['DOCUMENT_ROOT']."/path2file/"; // change the path to fit your websites document structure
 $fullPath = $path.$_GET['download_file'];
 
