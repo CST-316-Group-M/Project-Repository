@@ -1,15 +1,17 @@
 <html>
 	<body>
 	<?php
-	class Registration {
-		$fname = $_POST['fname'];
-		$lname = $_POST['lname'];
-		$email = $_POST['email'];
-		$password = $_POST['password'];	
+	require_once "databaseClass.php";					
+	class Registration extends MyDatabase {				//check if we have to extend if using require_once
 		
+		public $fname = 'Lauren';						//working on have $_POST variables as class properties
+		public $lname = 'Krugen';
+		public $email = 'lauren@gmail.com';
+		public $password = 'password';	
 		
+		//should be showing form, function is working backwards - will fix
 		function form() {			
-			if((!isset($fname)) || (!isset($lname)) || (!isset($password)) || (!isset($email))) {
+			if((isset($this->$fname)) || (isset($this->$lname)) || (isset($this->$password)) || (isset($this->$email))) {
 	?>
 		<h1>Almost There!</h1>
 		<b>We just need some information from you.</b>
@@ -22,19 +24,17 @@
 	
 	<?php
 		} else {
-				//connect to database 
-				$con = mysqli_connect("localhost","new","new");		// query not working? - double check sql perms
-						
-				//select the database 
-				$sel = mysqli_select_db($con, "auth");
-
+				echo "variables are set.";
 			}
 		}
-		function czechAccount() {		//functions that is czeching the account for duplicates first		
+		
+		// checking accounts for duplicates, need to debug - queries worked outside of function, working on testing
+		function czechAccount() {			
 			$query = "select * from users where email = '".$email."'";
 			$dup = mysqli_query($con, $query);
 			if (!$dup) {
 				echo "Cannot register; account already exists.";
+				return false;
 			}
 			else {
 				$query = "insert into users(first, last, password, email) values('".$fname."', '".$lname."', '".$password."', '".$email."')";
@@ -46,20 +46,21 @@
 					else {
 						echo "You've Successfully Registered!";
 						exit;
-					}	
+					}
+				return true;
 			}
 		}
 	}
 	
+	//creating an instance of Registration
 	$regi = new Registration();
+	$regi->connectDB();
 	$regi->form();
 	?>
 	
 	<!-- 
-	
 	KNOWN ISSUES/NEEDED FEATURES
 	- FILTER INPUT (VALIDATE EMAIL, ETC)
-	
 	-->
 	</body>
 </html>
