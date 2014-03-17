@@ -2,6 +2,8 @@
   Christopher McDonald, Group M
 
   Credit goes to anonymous tree tutorial
+
+  Code is entirely unchanged from where it was borrowed
 */
 
 window.onload = $(function() {
@@ -42,7 +44,14 @@ window.onload = $(function() {
     });
 
 /*
-  Credit goes to Addy Osmani for his webkitdirectory tutorial
+  Credit goes to Addy Osmani for his webkitdirectory tutorial (albeit very little)
+
+  Uses the name fields from the html page to retrieve the file list object and create the tree
+  if-blocks check if they are using something that is not Chrome/html5
+  Process uses the specification of the file object created from the prompt
+  nbsp needed for spacing
+
+  Problems include: Poor sorting which does not put folders at the top, logic structure lengthy
 */
 
   var singular,

@@ -2,6 +2,11 @@
   Christopher McDonald, Group M
 
   Credit goes to anonymous tree tutorial
+
+  table border can be removed on the real page
+  level 0 to 9 means that the indentations in the tree are not infinite, and can break
+  toggle creates the clickable button on a folder to hide and show child items
+  child is a placeholder to allow items to have icons while not having a clickable button
 */
 
 table td { border: 1px solid #eee; }
@@ -21,7 +26,10 @@ table td { border: 1px solid #eee; }
 .child { width:9px; display:inline-block; }
 
 /*
-  Credit goes to Addy Osmani for his webkitdirectory tutorial
+  Credit goes to Addy Osmani for his webkitdirectory tutorial (albeit very little)
+
+  container and row margins shape the page, and can be removed in the real page
+  The type styles adds the image to each item in the tree
 */
 
 .container { margin:20px }
