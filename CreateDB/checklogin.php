@@ -2,8 +2,8 @@
 $host="localhost"; // Host name 
 $email=""; // Mysql email 
 $password=""; // Mysql password 
-$db_name="test"; // Database name 
-$tbl_name="members"; // Table name 
+$db_name="my_db"; // Database name 
+$tbl_name="users"; // Table name 
 
 // Connect to the server and select databse.
 mysql_connect("$host", "$email", "$password")or die("cannot connect"); 
