@@ -22,7 +22,7 @@ $hide = "Test";
 
 
 if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) {
-    $currdir = "../root System/jtsmit11/Private Repo";
+    $currdir = "../root System/jtsmit11/Work";
 } else {
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
