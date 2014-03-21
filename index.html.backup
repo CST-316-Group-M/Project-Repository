@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Group M Project Managament</title>
+<link rel="stylesheet" type="text/css" href="mainhub.css">
+<script src="mainhub.js"></script>
+<script src="./dir/.index.php"></script>
+
+</head>
+
+<body>
+<div class="container">
+ 	<div class="hboxed"><h1>Group M Project Managment</h1></div>
+<div class="hboxed2"> </div>
+
+<div id="navbar"> 
+	<ul> 
+		<li><a href="http://www.google.com" target="_blank">Google</a></li> 
+		<li><a href="#">LinkHere</a></li> 
+		<li><a href="#">LinkHere</a></li> 
+		<li><a href="#">LinkHere</a></li> 
+		<li><a href="#">LinkHere</a></li> 
+	</ul> 
+</div> 
+
+<div class="RepoMang"></div>
+    <table class="repoTable">
+<tr>
+  <td width="90%"><b>Name of Repositories</b></th>		
+  <td width="10%"><b>Status</b></th>
+  </tr>
+<tr>
+<tr>
+  <td>
+  <a href="http://localhost/phptest/dir/" target="_new">Repository 1</a>
+  </td>
+  <td>Private</td>		
+  </tr>
+<tr>
+  <td><a href="http://localhost/phptest/dir2/" target="_new">Repository 2</a></td>
+  <td>Private</td>		
+</tr>
+<tr>
+  <td><a href="http://localhost/phptest/dir3/" target="_new">Repository 3</a></td>
+  <td>Public</td>		
+</tr>
+</table>
+    
+    <div class="widget2"></div>
+    <div class="widget3"></div>
+<div class="widget4"></div>  
+	<div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 1st, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
+	<div class="bboxed2"> </div>
+</body>
+</html>
+
