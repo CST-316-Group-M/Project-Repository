@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<h1>
+
+Testing
+</h1>
+</head>
+<body>
+
+
+<script language="javascript">
+// Download Scheme. First attempt is using iFrames
+
+
+var downloadURL = function downloadURL(url) {
+    var hiddenIFrameID = 'hiddenDownloader',
+        iframe = document.getElementById(hiddenIFrameID);
+    if (iframe === null) {
+        iframe = document.createElement('iframe');
+        iframe.id = hiddenIFrameID;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+    }
+    iframe.src = url;
+};
+
+/* Ajax attempt 1
+//This goes in the header.
+
+<script type ="text/javascript src="http://ajax.googleapis.com/ajax/libs/mootoo>
+<script type="javascript">
+window.addEvent("domready",function(){
+	//requesting
+	var csvRequest = new Request({
+		url: "",
+		onSuccess:function(response){
+		$("Hooray!").value = response;
+		}
+		}).send();
+		});
+	</script>
+	
+	
+Ajax attempt 2
+*/
+
+</script>
+</body>
+</html>
