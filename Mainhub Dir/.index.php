@@ -1,5 +1,5 @@
 <?php
-	
+    
 
 // Adds pretty filesizes
 function pretty_filesize($file) {
@@ -22,12 +22,12 @@ $hide = "Test";
 
 
 if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) {
-    $currdir = "../root System/jtsmit11/Private Repo";
+    $currdir = "../root System/jtsmit11";
 } else {
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
 
-if ($currdir == "../root System/jtsmit11") 
+if ($currdir == "../root System") 
     $label = "Root";
 else {
     $path = explode('/', $currdir);
@@ -41,16 +41,26 @@ else {
     <head>
         <meta charset="UTF-8">
         <link rel="shortcut icon" href="./.favicon.ico">
-        <title><?= $label ?></title>
-
+        <title>Group M Project Managament</title>
+        <link rel="stylesheet" type="text/css" href="mainhub.css">
+        <link rel="stylesheet" type="text/css" href="template.css">
         <link rel="stylesheet" href="./.style.css">
         <script src="./.sorttable.js"></script>
     </head>
 
     <body>
-        <div id="container">
-            <h1><?= $label ?></h1>
+        <div class="container1">
+        <div class="username"><h1>Jordan Smith</h1></div>
+        <div class="hboxed"><h1>Group M Project Managment</h1></div>
+        <div class="messenger"><center><h3>Messenger Client</h3></center></div>
+        <div class="hboxed2"> </div>
+        <div class="navi"><center><h3>Navigation Bar</h3></center></div>
+    
 
+        <div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 1st, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
+        <div class="bboxed2"> 
+    </div>
+        <div id="container">
             <table class="sortable">
                 <thead>
                     <tr>
@@ -93,7 +103,7 @@ for ($index = 0; $index < $indexCount; $index++) {
         // Gets File Names
         $name = $dirArray[$index];
         $namehref = ($currdir == "." ? "" : $currdir . '/') . $dirArray[$index];
-	$fullname = $currdir . '/' . $dirArray[$index];
+    $fullname = $currdir . '/' . $dirArray[$index];
 
         // Gets Date Modified
         $modtime = date("M j Y g:i A", filemtime($fullname));
@@ -206,12 +216,12 @@ for ($index = 0; $index < $indexCount; $index++) {
 
         // Output
         echo("
-		<tr class='$class'>
-			<td><a href='$namehref'$favicon class='name'>$name</a></td>
-			<td><a href='$namehref'>$extn</a></td>
-			<td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
-			<td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>
-		</tr>");
+        <tr class='$class'>
+            <td><a href='$namehref'$favicon class='name'>$name</a></td>
+            <td><a href='$namehref'>$extn</a></td>
+            <td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
+            <td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>
+        </tr>");
     }
 }
 ?>
@@ -221,13 +231,5 @@ for ($index = 0; $index < $indexCount; $index++) {
 
         <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
         </div>
-        
-  	<form action="upload_file.php" method="post"
-		enctype="multipart/form-data">
-		<label for="file">Filename:</label>
-		<input type="file" name="file" id="file"><br>
-		<input type="submit" name="submit" value="Submit">
-	</form>
-    
     </body>
 </html>

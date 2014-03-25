@@ -1,0 +1,29 @@
+/* 
+Author: Jordan Smith
+Last Revise: 3/23/14
+
+This is the CSS File for profile.html
+*/
+
+img.user_pic
+{
+	position:absolute;
+	width: 350px;
+	height: auto;
+	left: 50px;
+	top: 100px;
+	border: 5px solid black;
+}
+
+.Header
+{
+	position: absolute;
+	font-size: 68px;
+	top: 100px;
+	left: 410px;
+	font-weight: bold;
+	background-color: #FF6F00;
+	width: 75%;
+	-webkit-border-top-right-radius: 30px 30px; 
+	-webkit-border-bottom-right-radius: 30px 30px;
+}

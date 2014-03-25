@@ -5,22 +5,6 @@ Last Revise: 3/23/14
 
 This is the CSS File for mainhub.html
 */
-		.repoTable 
-			{
-				position:absolute;
-				top:150px;
-				left:151px;
-				width: 702px;
-				height: auto;
-				border-width:5px;
-			}
-		
-		table,th,td
-			{
-				height: 35px;
-				border:1px solid black;
-				border-collapse:collapse;			
-				}
 				
 		.navi
 		{
