@@ -7,6 +7,7 @@
 				$_SESSION['test'] = "hello world";
 				$id = session_id();
 				echo "Session Id: " . $id;
+				
 				/*
 				require_once "databaseClass.php";
 				

@@ -19,6 +19,7 @@
 		
 		//select database
 		public function selectDB() {
+				$con = mysqli_connect($this->host,$this->user,$this->pass);
 				$sel = mysqli_select_db($con, "auth");
 					if(!$con) {
 							echo "Error: could not select database.";
@@ -28,14 +29,12 @@
 						}
 		}
 		
-		/*
-		function czechAccount() {		//functions that is czeching the account for duplicates first		
+		
+		function addAccount() {		//functions that is checking the account for duplicates first		
+			$con = mysqli_connect($this->host,$this->user,$this->pass);
 			$query = "select * from users where email = '".$email."'";
 			$dup = mysqli_query($con, $query);
 			if (!$dup) {
-				echo "Cannot register; account already exists.";
-			}
-			else {
 				$query = "insert into users(first, last, password, email) values('".$fname."', '".$lname."', '".$password."', '".$email."')";
 				$result = mysqli_query($con, $query);
 					if (!$result) {
@@ -44,15 +43,19 @@
 						}
 					else {
 						echo "You've Successfully Registered!";
-						return true;					}	
+						return true;	
+						}
 			}
-		} */
-	}
+			else {
+				echo "Cannot register; account already exists.";
+				return false;				
+				}
+						
+			}
+		}  
+		
 	
-	/*
 	
-	Need to add query to register a user and to select a user for login
-	
-	*/
+
 	
 	?>
