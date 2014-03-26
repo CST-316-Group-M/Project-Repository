@@ -13,6 +13,7 @@ img.user_pic
 	left: 50px;
 	top: 100px;
 	border: 5px solid black;
+	box-shadow: 15px 15px 10px -5px rgba(0,0,0,0.5);
 }
 
 .Header
@@ -26,4 +27,5 @@ img.user_pic
 	width: 75%;
 	-webkit-border-top-right-radius: 30px 30px; 
 	-webkit-border-bottom-right-radius: 30px 30px;
+	box-shadow: 10px 10px 10px -5px rgba(0,0,0,0.5);
 }

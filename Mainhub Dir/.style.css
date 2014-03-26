@@ -1,12 +1,6 @@
 * {
-	padding:0;
-	margin:0;
-}
-
-h1 {
-	text-align: center;
-	padding: 20px 0 12px 0;
-	margin: 0;
+	padding:0px;
+	margin:0px;
 }
 h2 {
 	font-size: 16px;
@@ -19,7 +13,7 @@ h2 {
 	box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
 	position: absolute;
 	top: 120px;
-	left: 150px;
+	left: 225px;
 	font: 14px Sans-Serif;
 	width: 900px;
 }

@@ -1,8 +1,7 @@
 <?php
-    
-
 // Adds pretty filesizes
-function pretty_filesize($file) {
+function pretty_filesize($file) 
+{
     $size = filesize($file);
     if ($size < 1024) {
         $size = $size . " Bytes";
@@ -15,25 +14,23 @@ function pretty_filesize($file) {
     }
     return $size;
 }
-
 date_default_timezone_set("America/Phoenix");
-
 $hide = "Test";
-
-
-if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) {
+if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) 
+{
     $currdir = "../root System/jtsmit11";
-} else {
+} 
+else 
+{
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
-
 if ($currdir == "../root System") 
     $label = "Root";
-else {
+else 
+{
     $path = explode('/', $currdir);
     $label = $path[count($path)-1]; 
 }
-
 ?>
 
 <!doctype html>
@@ -47,14 +44,22 @@ else {
         <link rel="stylesheet" href="./.style.css">
         <script src="./.sorttable.js"></script>
     </head>
-
     <body>
         <div class="container1">
         <div class="username"><h1>Jordan Smith</h1></div>
         <div class="hboxed"><h1>Group M Project Managment</h1></div>
         <div class="messenger"><center><h3>Messenger Client</h3></center></div>
         <div class="hboxed2"> </div>
-        <div class="navi"><center><h3>Navigation Bar</h3></center></div>
+        <div class="navbar">
+            <ul>
+                <div class="bar"><a href="#">Home</a></div> 
+                <div class="bar"><a href="#">Directory</a></div>
+                <div class="bar"><a href="#">How to</a></div> 
+                <div class="bar"><a href="#">Settings</a></div> 
+                <div class="bar"><a href="#">Log Out</a></div> 
+            </ul>
+            
+        </div>
     
 
         <div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 1st, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
@@ -72,12 +77,12 @@ else {
                 </thead>
                 <tbody>
 <?php
-
 // Opens directory
 $myDirectory = opendir($currdir);
 
 // Gets each entry
-while ($entryName = readdir($myDirectory)) {
+while ($entryName = readdir($myDirectory)) 
+{
     $dirArray[] = $entryName;
 }
 
@@ -89,10 +94,9 @@ $indexCount = count($dirArray);
 
 // Sorts files
 //sort($dirArray);
-
 // Loops through the array of files
-for ($index = 0; $index < $indexCount; $index++) {
-
+for ($index = 0; $index < $indexCount; $index++) 
+{
     // Decides if hidden files should be displayed, based on query above.
     if (substr("$dirArray[$index]", 0, 1) != $hide || ($currdir != '.' && $dirArray[$index] == "..")) {
 
