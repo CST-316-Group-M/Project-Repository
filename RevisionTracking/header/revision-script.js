@@ -44,28 +44,37 @@ window.onload = $(function() {
     });
 
 /*
+  Hope this works
+*/
+
+    $('#fileOutput').on('click', '.history', function () {
+        $("[id^='revisionOutput']").children().each(function() {
+            $(this).hide();
+        });
+        
+        var el = $(this);
+        var hist = el.attr("id");
+        $("*[id^='" + hist + "']").each(function() {
+            $(this).show();
+        });
+    });
+
+/*
   Little stub for testing
 */
 
-	function File(name,date,size) {
+	function File(name,date) {
 	    this.name = name;
 	    this.date = date;
-	    this.size = size;
 	}
 
 	var dummyrepo = [
-	new File("OfflineRepo/Folder 1/.","3/4/14 14:44",""),
-	new File("OfflineRepo/Folder 1/File 1.doc","3/4/14 12:35","9034"),
-	new File("OfflineRepo/Folder 1/File 1.doc/revision3-3-14.rev","3/3/14 18:13","8132"),
-	new File("OfflineRepo/Folder 1/File 2.doc","3/17/14 15:55","3293"),
-	new File("OfflineRepo/Folder 1/File 2.doc/revision3-14-14.rev","3/14/14 5:34","3066"),
-	new File("OfflineRepo/Folder 1/File 2.doc/revision3-7-14.rev","3/7/14 6:43","1024"),
-	new File("OfflineRepo/File 3.html","3/7/14 15:00","1135"),
-	new File("OfflineRepo/File 3.html/revision2-28-14.rev","2/28/14 12:12","1076"),
-	new File("OfflineRepo/File 3.html/revision2-26-14.rev","2/26/14 23:59","845"),
-	new File("OfflineRepo/File 3.html/revision2-5-14.rev","2/5/14 1:53","433"),
-	new File("OfflineRepo/File 4.txt","1/25/14 3:17","590"),
-	new File("OfflineRepo/File 5.png","11/4/13 17:34","23546")
+	new File("OfflineRepo/Folder 1/.","3/4/14 14:44"),
+	new File("OfflineRepo/Folder 1/File 1.doc","3/4/14 12:35"),
+	new File("OfflineRepo/Folder 1/File 2.doc","3/17/14 15:55"),
+	new File("OfflineRepo/File 3.html","3/7/14 15:00"),
+	new File("OfflineRepo/File 4.txt","1/25/14 3:17"),
+	new File("OfflineRepo/File 5.png","11/4/13 17:34")
 	];
 
 /*
@@ -91,10 +100,11 @@ window.onload = $(function() {
       nextExt,
       mother,
       date,
-      size,
       output = document.getElementById("fileOutput");
+      output2 = document.getElementById("revisionOutput");
 
     output.innerHTML = "";
+    output2.innerHTML = "";
     files = dummyrepo;
     len = files.length;
 
@@ -125,12 +135,8 @@ window.onload = $(function() {
       else {
           mother = "child";
       }
+      output.innerHTML += "<tr data-depth='" + (pathLen - 2) + "' class='collapse level" + (pathLen - 2) + "'><td>&nbsp<span class='" + mother + "'></span>&nbsp<span class='type-" + ext + "'>&nbsp&nbsp&nbsp&nbsp&nbsp" + path[pathLen - 1] + "</span></td><td style='width:22px'><span class='history' id='" + i + "'></span></td></tr>";
       date = file.date;
-      size = file.size;
-      if(size!="") {
-          size = " | " + size;
-          size += " b";
-      }
-      output.innerHTML += "<tr data-depth='" + (pathLen - 2) + "' class='collapse level" + (pathLen - 2) + "'><td>&nbsp<span class='" + mother + "'></span>&nbsp<span class='type-" + ext + "'>&nbsp&nbsp&nbsp&nbsp&nbsp" + path[pathLen - 1] + " | " + date + size + "</span></td></tr>";
+      output2.innerHTML += "<tr id='" + i + "' style='display: none;'><td>" + path[pathLen - 1] + "</td><td>" + date + "</td></tr>";
     }
 });
