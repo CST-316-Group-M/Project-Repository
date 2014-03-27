@@ -7,8 +7,8 @@ This is the main template of all the pages on the web page.
 Any time a webpage is created the webpage should imediatly link to this CSS File.*/
 		html, body 
 		{
-			width: 100%;
-			height: 100%;
+			width: relative;
+			height: relative;
 			background-color: white;
 		}
         .hboxed 
@@ -21,7 +21,7 @@ Any time a webpage is created the webpage should imediatly link to this CSS File
         .hboxed2 
         {
             position:absolute;
-            width:100%;
+            width: 100%;
             height: 2px;
             background-color: #2E2EFE;
 			top: 60px;
@@ -29,10 +29,10 @@ Any time a webpage is created the webpage should imediatly link to this CSS File
 		.bboxed 
         {
             position:absolute;
-            width:100%;
+            width: 100%;
             height: 100px;
             background-color: #A4A4A4;
-			bottom: 0px;
+			bottom: 0%;
         }
         .bboxed2 
         {
