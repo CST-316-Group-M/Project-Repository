@@ -15,11 +15,11 @@
 	if(isset($_POST['fname']) && !empty($_POST['fname']) && isset($_POST['lname']) && !empty($_POST['lname']) 
 	&& isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['password']) && !empty($_POST['password']))
 	{
-		$db = connect('jake','drag7388');
+		$db = connect('root','CST316groupm');
 		if($db!=false)
 		{
 			register($db);
-			echo "User Registered";
+			header('Location: /success.php');
 		}
 	}
 	
@@ -27,7 +27,7 @@
 	{
 		try
 		{
-			$db = new PDO('mysql:host=localhost;dbname=my_db','jake','drag7388');
+			$db = new PDO('mysql:host=localhost;dbname=CST316','root','CST316groupm');
 			return $db;
 		}
 		catch(PODException $e)
@@ -39,9 +39,9 @@
 	
 	function register($db)
 	{
-		$fname = mysql_real_escape_string($_POST['fname']);
-		$lname = mysql_real_escape_string($_POST['lname']);
-		$email = mysql_real_escape_string($_POST['email']);
+		$fname = $_POST['fname'];
+		$lname = $_POST['lname'];
+		$email = $_POST['email'];
 		$password = sha1($_POST['password']);
 
 		$query = "INSERT INTO users(fname,lname,email,password) values('".$fname."','".$lname."','".$email."','".$password."')";
