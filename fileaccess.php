@@ -8,11 +8,12 @@
 	**/
 	class FileAccess {
 		
-		// 
-		function createDir($userdir, $username) {
+		//WORKS, NEED REGISTRATION PAGE TO MAKE INTIAL FOLDER THAT IS THE SAME
+		//NAME AS THE PRIMARY KEY (EMAIL) FOR IT TO WORK
+		function createDir($userdir, $username) {	
 		//if(!exists)
-			//mkdir("/var/www/cst316/users/$username/$userdir/", 0777);			//CHANGE THIS FILEPATH WHEN ON SERVER
-			echo "Creating new directory: " . $userdir . "/ for user: " . $username;
+			mkdir("/wamp/www/cst316/users/$username/$userdir/", 0777);			//CHANGE THIS FILEPATH WHEN ON SERVER
+			echo "Creating new directory: " . $userdir . " for user: " . $username;
 		}
 		
 		// will be implemented
@@ -29,6 +30,16 @@
 		function removeFile() {
 		
 		}
+		
+		function viewDir($username) {
+			if ($dir = opendir("/wamp/www/cst316/users/$username/")) {
+				while (false !== ($entry = readdir($dir))) {
+					echo $entry;
+				}
+			
+			closedir($dir);
+				}
+			}
 	}
 
 ?>
