@@ -1,15 +1,6 @@
 <html>
 	<body>
 	<?php
-	
-	//Original file work is by Jake
-	//next lines added by Jason
-	//$host="localhost"; // Host name 
-	//$username="root"; // Mysql username 
-	//$password="CST316groupm"; // Mysql password 
-	//$db_name="CST316"; // Database name 
-	//$tbl_name="Users"; // Table name 
-	
 	if(empty($_POST['fname']))
 	{echo "First name is blank!";}
 	if(empty($_POST['lname']))
@@ -18,26 +9,21 @@
 	{echo "eamil is blank!";}
 	if(empty($_POST['password']))
 	{echo "password is blank!";}
-
-
-
+	
+	
+	
 	if(isset($_POST['fname']) && !empty($_POST['fname']) && isset($_POST['lname']) && !empty($_POST['lname']) 
 	&& isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['password']) && !empty($_POST['password']))
-	{	
-	// Connect to server and select database.
-		$db = connect('root','CST316group');
+	{
+		$db = connect('root','CST316groupm');
 		if($db!=false)
 		{
-			register($db);
-			echo "User Registered";
+				register($db);
+			
 		}
-		else 
-		{
-			echo "Broken!"; 
-			}
 	}
-
-	function connect($username,$pass)
+	
+	function connect($dbuser,$dbpassword)
 	{
 		try
 		{
@@ -50,25 +36,55 @@
 			return false;
 		}		
 	}
-
+		
 	function register($db)
 	{
-		$fname1 = mysql_real_escape_string($_POST[fname]);
-		$lname1 = mysql_real_escape_string($_POST[lname]);
-		$password1 = sha1($_POST['password']);
-		$email1 = mysql_real_escape_string($_POST[email]);
+		$fname = $_POST['fname'];
+		$lname = $_POST['lname'];
+		$email = $_POST['email'];
+		$password = sha1($_POST['password']);
 		
+		$query = "SELECT * FROM users WHERE email = '".$email."'";
+		$dup = mysql_query($db, $query);
+		//$dup = mysql_query("SELECT username FROM users WHERE username='".$_POST['username']."'");
+		if (!$dup) {
+				$query2 = "INSERT INTO users(fname,lname,email,password) values('".$fname."','".$lname."','".$email."','".$password."')";
+				try
+				{
+					$db->beginTransaction();
+					$db->exec($query2);
+					$db->commit();
+				}
+				catch(Exception $e){}
+				
+				$result = mysql_query($db, $query2);
+					
+					if (!$result) {
+						echo "Registration Failed.";
+						return false;
+					}
+					else {
+						echo "You've Successfully Registered!";
+						return true;	
+					}
+				}
+			else {
+				//header('Location: /failed.php');
+				echo "Cannot register; account already exists.";
+				return false;				
+			}
 
-		$query = "INSERT INTO Users(first,last,password,email) VALUES ('$_POST[fname]','$_POST[lname]','$password1','$email1')";
-		try
+		/*try
 		{
 			$db->beginTransaction();
 			$db->exec($query);
+			$db->exec($query2);
 			$db->commit();
 		}
 		catch(Exception $e){}
+		*/
 	}
-
+	
 	?>
 	
 	<!DOCTYPE html>
