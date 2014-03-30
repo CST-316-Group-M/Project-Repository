@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="GroupM" basedir="." default="dist">
+	
+	<!-- ==================================== -->
+	<!-- Target: Clean					  -->
+	<!-- ==================================== -->
+	<target name="prepare">
+	<!-- should do a 'clean' here, removing user folders in the user directory -->
+	</target>
+
+	<!-- ==================================== -->
+	<!-- Target: Package					 	  -->
+	<!-- ==================================== -->
+	<target name="build">
+	<!-- can put all files into a zip file, might move this down below
+		if that's something we want to do-->
+	</target>
+	
+	<!-- ==================================== -->
+	<!-- Target: Dist						  -->
+	<!-- ==================================== -->
+	<target name="dist">
+		<delete dir="/users"/>
+	</target>
+	
+	<!--	PHPUNIT TESTING
+	<target name="Test Report" />
+	phing can provide coverage reports 
+	<phpunit haltonfailure="true" printsummary="true">
+		<batchtest>
+		
+		todir = "Tests"
+			<fileset dir=".">
+				<include name=""/>
+				<include name=""/>
+				<include name=""/>
+				<include name=""/>
+				<include name=""/>
+			</fileset>
+		</batchtest>
+	</phpunit>
+	</target>
+	-->
+	
+</project>
