@@ -99,6 +99,7 @@ window.onload = $(function() {
       nextPathLen,
       nextExt,
       mother,
+      indent,
       date,
       output = document.getElementById("fileOutput");
       output2 = document.getElementById("revisionOutput");
@@ -135,8 +136,9 @@ window.onload = $(function() {
       else {
           mother = "child";
       }
-      output.innerHTML += "<tr data-depth='" + (pathLen - 2) + "' class='collapse level" + (pathLen - 2) + "'><td>&nbsp<span class='" + mother + "'></span>&nbsp<span class='type-" + ext + "'>&nbsp&nbsp&nbsp&nbsp&nbsp" + path[pathLen - 1] + "</span></td><td style='width:22px'><span class='history' id='" + i + "'></span></td></tr>";
+      indent = ((pathLen - 2) * 15);
+      output.innerHTML += "<tr data-depth='" + (pathLen - 2) + "' class='collapse level'><td>&nbsp<span class='" + mother + "' style='padding-left:" + indent + ";'></span>&nbsp<span class='type-" + ext + "'>&nbsp&nbsp&nbsp&nbsp&nbsp" + path[pathLen - 1] + "</span></td><td style='width:22px'><span class='history' id='0" + i + "'></span></td></tr>";
       date = file.date;
-      output2.innerHTML += "<tr id='" + i + "' style='display: none;'><td>" + path[pathLen - 1] + "</td><td>" + date + "</td></tr>";
+      output2.innerHTML += "<tr id='0" + i + "' style='display: none;'><td>" + path[pathLen - 1] + "</td><td>" + date + "</td></tr>";
     }
 });
