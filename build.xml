@@ -5,14 +5,14 @@
 	<!-- ==================================== -->
 	<!-- Target: Clean					  -->
 	<!-- ==================================== -->
-	<target name="prepare">
+	<target name="clean">
 	<!-- should do a 'clean' here, removing user folders in the user directory -->
 	</target>
 
 	<!-- ==================================== -->
 	<!-- Target: Package					 	  -->
 	<!-- ==================================== -->
-	<target name="build">
+	<target name="package">
 	<!-- can put all files into a zip file, might move this down below
 		if that's something we want to do-->
 	</target>
@@ -21,7 +21,7 @@
 	<!-- Target: Dist						  -->
 	<!-- ==================================== -->
 	<target name="dist">
-		<delete dir="/users"/>
+		<delete dir="users" />
 	</target>
 	
 	<!--	PHPUNIT TESTING
