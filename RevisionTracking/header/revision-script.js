@@ -63,29 +63,32 @@ window.onload = $(function() {
   Little stub for testing
 */
 
-	function File(name,date) {
+	function File(name,date,size) {
 	    this.name = name;
 	    this.date = date;
+            this.size = size;
 	}
 
 	var dummyrepo = [
-	new File("OfflineRepo/Folder 1/.","3/4/14 14:44"),
-	new File("OfflineRepo/Folder 1/File 1.doc","3/4/14 12:35"),
-	new File("OfflineRepo/Folder 1/File 2.doc","3/17/14 15:55"),
-	new File("OfflineRepo/File 3.html","3/7/14 15:00"),
-	new File("OfflineRepo/File 4.txt","1/25/14 3:17"),
-	new File("OfflineRepo/File 5.png","11/4/13 17:34")
+	 new File("FakeRepo/Folder 1/.","3/4/14 14:44","560"),
+	 new File("FakeRepo/Folder 1/File 1.doc","3/4/14 12:35","256"),
+         new File("FakeRepo/Folder 1/.File 1doc/.","3/4/14 12:35","202"),
+         new File("FakeRepo/Folder 1/.File 1doc/File 1-1.doc","3/2/14 23:44","202"),
+	 new File("FakeRepo/Folder 1/File 2.doc","3/17/14 15:55","102"),
+	 new File("FakeRepo/File 3.html","3/7/14 15:00","68"),
+	 new File("FakeRepo/File 4.txt","1/25/14 3:17","40"),
+	 new File("FakeRepo/File 5.png","11/4/13 17:34","634"),
+	 new File("FakeRepo/.File 5png/.","11/4/13 17:34","1325"),
+	 new File("FakeRepo/.File 5png/File 5-1.png","10/30/13 10:45","780"),
+	 new File("FakeRepo/.File 5png/File 5-2.png","10/23/13 19:14","545")
 	];
 
 /*
   Credit goes to Addy Osmani for his webkitdirectory tutorial (albeit very little)
 
-  Uses the name fields from the html page to retrieve the file list object and create the tree
-  if-blocks check if they are using something that is not Chrome/html5
-  Process uses the specification of the file object created from the prompt
-  nbsp needed for spacing
+  Blank
 
-  Problems include: Poor sorting which does not put folders at the top, logic structure lengthy
+  nbsp still needed for spacing
 */
 
   var files,
@@ -100,7 +103,7 @@ window.onload = $(function() {
       nextExt,
       mother,
       indent,
-      date,
+      fileName,
       output = document.getElementById("fileOutput");
       output2 = document.getElementById("revisionOutput");
 
@@ -113,12 +116,13 @@ window.onload = $(function() {
       file = files[i];
       path = file.name.split("/");
       pathLen = path.length;
-      ext = file.name.split(".").pop();
-      if(ext == "") {
-        ext = "folder";
-        pathLen -= 1;
-      }
-      if(i < (len - 1)) {
+      if(path[pathLen - 2].charAt(0) != '.') {
+        ext = file.name.split(".").pop();
+        if(ext == "") {
+          ext = "folder";
+          pathLen -= 1;
+        }
+        if(i < (len - 1)) {
           nextFile = files[i+1];
           nextPath = nextFile.name.split("/");
           nextPathLen = nextPath.length;
@@ -132,13 +136,21 @@ window.onload = $(function() {
           else {
             mother = "child";
           }
+        }
+        else {
+          mother = "child";
+        }
+        indent = ((pathLen - 2) * 15);
+        fileName = path[pathLen - 1].split(".").shift();
+        output.innerHTML += "<tr data-depth='" + (pathLen - 2) + "' class='collapse level'><td style='padding-left:" + indent + ";'>&nbsp<span class='" + mother + "'></span>&nbsp<span class='type-" + ext + "'>&nbsp&nbsp&nbsp&nbsp&nbsp" + path[pathLen - 1] + "</span></td><td style='width:22px'><span class='history' id='" + fileName + ext + "'></span></td></tr>";
+        output2.innerHTML += "<tr id='" + fileName + ext + "' style='display: none;'><td>" + path[pathLen - 1] + "</td><td>" + file.date + "</td><td>" + file.size + " kb</td></tr>";
       }
       else {
-          mother = "child";
+        if(path[pathLen - 1].charAt(0) != '.') {
+          fileName = path[pathLen - 1].split(".").shift();
+          fileName = fileName.split("-").shift();
+          output2.innerHTML += "<tr id='" + fileName + ext + "' style='display: none;'><td>" + path[pathLen - 1] + "</td><td>" + file.date + "</td><td>" + file.size + " kb</td></tr>";
+        }
       }
-      indent = ((pathLen - 2) * 15);
-      output.innerHTML += "<tr data-depth='" + (pathLen - 2) + "' class='collapse level'><td>&nbsp<span class='" + mother + "' style='padding-left:" + indent + ";'></span>&nbsp<span class='type-" + ext + "'>&nbsp&nbsp&nbsp&nbsp&nbsp" + path[pathLen - 1] + "</span></td><td style='width:22px'><span class='history' id='0" + i + "'></span></td></tr>";
-      date = file.date;
-      output2.innerHTML += "<tr id='0" + i + "' style='display: none;'><td>" + path[pathLen - 1] + "</td><td>" + date + "</td></tr>";
     }
 });
