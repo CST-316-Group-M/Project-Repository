@@ -161,7 +161,8 @@ window.onload = $(function() {
           mother = "child";
         }
         indent = ((pathLen - 2) * 15);
-        fileName = path[pathLen - 1].split(".").shift();
+        fileName = path[pathLen - 1];
+        fileName = fileName.substr(0,fileName.lastIndexOf("."));
         output.innerHTML += "<tr data-depth='" + (pathLen - 2) + "' class='collapse level'><td style='padding-left:" + indent + ";'>&nbsp<span class='" + mother + "'></span>&nbsp<span class='type-" + ext + "'>&nbsp&nbsp&nbsp&nbsp&nbsp" + path[pathLen - 1] + "</span></td><td style='width:22px'><span class='history' id='" + fileName + ext + "'></span></td></tr>";
         output2.innerHTML += "<tr id='" + fileName + ext + "' style='display: none;'><td>" + path[pathLen - 1] + "</td><td>" + file.date + "</td><td>" + file.size + " kb</td></tr>";
       }
