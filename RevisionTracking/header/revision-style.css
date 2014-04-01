@@ -3,10 +3,10 @@
 
   Credit goes to anonymous tree tutorial
 
-  table border can be removed on the real page
-  levels made infinite
-  toggle creates the clickable button on a folder to hide and show child items
+  levels made infinite in the js file
+  collapse/toggle creates the clickable button on a folder to hide and show child items
   child is a placeholder to allow items to have icons while not having a clickable button
+  history creates the H icon which shows the revision history of the item
 */
 
 .level td:first-child { border:1px solid #eee; }
@@ -20,7 +20,8 @@
   Credit goes to Addy Osmani for his webkitdirectory tutorial (albeit very little)
 
   container and row margins shape the page, and can be removed in the real page
-  The type styles adds the image to each item in the tree
+  The type styles adds the image to each item in the tree. Needs a more complete selection
+  of icons, as it currently only shows common files, and makes the rest blank
 */
 
 .container { margin:20px }

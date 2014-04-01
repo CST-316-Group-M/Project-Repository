@@ -3,7 +3,7 @@
 
   Credit goes to anonymous tree tutorial
 
-  Code is entirely unchanged from where it was borrowed
+  Code immediately below is entirely unchanged from where it was borrowed
 */
 
 window.onload = $(function() {
@@ -44,7 +44,13 @@ window.onload = $(function() {
     });
 
 /*
-  Hope this works
+  When a user clicks on the H icon at the end of a file, this executes.
+
+  The first line hides all of the currently shown history data, to make it cleanly update.
+
+  The second and third line acquire the file name in the id field.
+
+  The last line searches and shows the history data that matches the id from the H icon.
 */
 
     $('#fileOutput').on('click', '.history', function () {
@@ -61,6 +67,12 @@ window.onload = $(function() {
 
 /*
   Little stub for testing
+
+  Creates file data with the specification of a file system, where FakeRepo is the folder that
+  the repo is assigned to.
+
+  Hopefully, it could be a smooth transition into real data if the file objects passed have the
+  same accessors (name, date, size) so that the code to create the tree can remain unchanged.
 */
 
 	function File(name,date,size) {
@@ -86,9 +98,17 @@ window.onload = $(function() {
 /*
   Credit goes to Addy Osmani for his webkitdirectory tutorial (albeit very little)
 
-  Blank
+  Carried over from the previous iteration (which showed files on the local file system) and
+  changed to suit the differences (mainly the avoidance of webkitdirectory).
 
-  nbsp still needed for spacing
+  The top level code filters out files with periods at the start of them, as that indicates
+  items which are used purely for the revision history portion.
+
+  Real files and folders are put into the tree with their id associated with them. The large
+  nextFile block is to determine whether the folder has items in it or not.
+
+  The last chunk filters out the folders which contain the old data, and only works with the files
+  which are inside of them. It builds the id to match the real file based on a naming convention.
 */
 
   var files,
@@ -148,7 +168,7 @@ window.onload = $(function() {
       else {
         if(path[pathLen - 1].charAt(0) != '.') {
           fileName = path[pathLen - 1].split(".").shift();
-          fileName = fileName.split("-").shift();
+          fileName = fileName.substr(0,fileName.lastIndexOf("-"));
           output2.innerHTML += "<tr id='" + fileName + ext + "' style='display: none;'><td>" + path[pathLen - 1] + "</td><td>" + file.date + "</td><td>" + file.size + " kb</td></tr>";
         }
       }
