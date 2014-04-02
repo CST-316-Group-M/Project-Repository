@@ -8,27 +8,28 @@ connect();
 ?>
 <!doctype html>
 <html>
-<head>
-<title> Dynamiclist - </title>
-</head>
-<body>
-
-<section>
- <article>
- <hgroup>
- </hgroup>
+	<head>
+		<title> Dynamiclist - </title>
+		<h1 align="center">Users List</h1>
+	</head>
+	
+	<body>
+		<section>
+			<article>
+			<hgroup>
+			</hgroup>
  
- <p align="center">
+			<p align="center">
  
-<select name="USERS">
+			<select name="USERS">
 
-<?php query() ?>
+			<?php query() ?>
 
-</select>
+				</select>
 
-<?php close() ?>
-</p>
-</article>
-</section>
-</body>
+					<?php close() ?>
+				</p>
+			</article>
+		</section>
+	</body>
 </html>
