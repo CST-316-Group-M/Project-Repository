@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<span id="spanDate" ></span>
+<head>
+<title>Group M Project Managament</title>
+<link rel="stylesheet" type="text/css" href="registration.css">
+<script src="dir/sorttable.js"></script>
+</head>
+
+<body>
+<div class="container">
+ 	<div class="hboxed"><h1>Group M Project Managment</h1></div>
+	<div class="hboxed2"> </div>
+    <body onload="document.registration.userid.focus();">
+<div class="contain">
+	<h1>Registration</h1>
+	<form name='registration' onSubmit="return formValidation();">
+	<ul>
+	<label for="userid">User id:</label><br>
+	<input type="text" name="userid" size="12" /><br>
+	<label for="passid">Password:</label><br>
+	<input type="password" name="passid" size="12" /><br>
+	<label for="username">Name:</label><br>
+	<input type="text" name="username" size="50" /><br>
+	<label for="address">Address:</label><br>
+	<input type="text" name="address" size="50" /><br>
+	<label for="country">Country:</label><br>
+	<select name="country">
+	<option selected="" value="Default">(Please select a country)</option>
+	<option value="AF">Australia</option>
+	<option value="AL">Canada</option>
+	<option value="DZ">India</option>
+	<option value="AS">Russia</option>
+	<option value="AD">USA</option>
+	</select><br>
+	<label for="zip">ZIP Code:</label><br>
+	<input type="text" name="zip" /><br>
+	<label for="email">Email:</label><br>
+	<input type="text" name="email" size="50" /><br>
+	<label id="gender">Sex:</label>
+	<input type="radio" name="sex" value="Male" /><span>Male</span>
+	<input type="radio" name="sex" value="Female" /><span>Female</span><br><br>
+	<input type="submit" name="submit" value="Submit" />
+	</ul>
+	</form>
+</div>
+</body>
+    <div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: February 25th, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
+	<div class="bboxed2"> </div>
+</body>
+</html>

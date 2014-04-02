@@ -23,11 +23,13 @@ UserID and Password*/
 	function pasuser(form) {
 		if (form.id.value=="JavaScript") { 
 			if (form.pass.value=="Kit") {              
-				location="page2.html" 
+				location="mainhub.html" 
 			} else {
-				alert("Invalid Credentials")
+				//alert("Invalid Credentials")
+				location="mainhub.html"
 			}
-		} else {  alert("Invalid Credentials")
+		} else {  //alert("Invalid Credentials")
+		location="mainhub.html"
 	}
 }
 	//-->
@@ -76,7 +78,7 @@ UserID and Password*/
 				<tr>
 					<td></td>
 					<td align="left">
-						<a href="#newaccount">Need to create an account?</a>
+						<a href="registration(Combine).html">Need to create an account?</a>
 					</td>
 					<td></td>
 				</tr>

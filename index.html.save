@@ -1,0 +1,15 @@
+<html><body><h1>CST316M Main Page</h1>
+<p>This is the default web page for this server.</p>
+<p>The web server software is running but no content has been added, yet.</p>
+<p> <ul>TODO:
+<li>1. Replace this page with main gui page + registration page (if possible</li>)
+<li>2. Create or manage a user database. Create a 'group' Database</li>
+<li>3. Add PHP handling and flow.</li>
+<li>4. Test upload and download with FTP/PHP. Create a default location for files</li>
+<li>5. Test test test!</li>
+<li>6. Possible txt editor online (research required)</li>
+<li>7. security </li></p>
+
+
+</body></html>
+
