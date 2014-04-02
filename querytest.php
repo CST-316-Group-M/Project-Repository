@@ -1,4 +1,5 @@
 <?php
+//comments needed!
 		$con = mysqli_connect("localhost","webauth","webauth");
 			if(!$con) {
 				echo "Could not connect to database.";

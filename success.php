@@ -1,4 +1,5 @@
 <?php
+//comments needed!
 if (isset($_POST['Button'])) {
 	echo "HELLO!";
 	header('Location: /login.php');
