@@ -27,7 +27,14 @@
 		
 		// will be implemented
 		function removeFile() {
+			$uname;
+			//get file selection name (may need code borrowed from listing directories)
+			//$uname = (filename)
+			if (check file within old database folder)
+			{ rm $uname /f (force removal) }
+			else { create copy within old database folder then delete}
 		
+			
 		}
 	}
 
