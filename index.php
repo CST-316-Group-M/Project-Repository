@@ -1,18 +1,34 @@
 <?php
 
  // It can connect to function file 
-include_once 'func.inc.php';
+include_once 'func.php';
 
 connect();
 
 ?>
+<!doctype html>
+<html>
+<head>
+<title> Dynamiclist - </title>
+</head>
+<body>
 
-
-
-<select name=""> // Select the items from the table
+<section>
+ <article>
+ <hgroup>
+ </hgroup>
+ 
+ <p align="center">
+ 
+<select name="USERS">
 
 <?php query() ?>
 
 </select>
 
 <?php close() ?>
+</p>
+</article>
+</section>
+</body>
+</html>

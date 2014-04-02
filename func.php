@@ -1,14 +1,14 @@
 <?php
 
-include_once 'db.inc.php'; // it is including connection
+include_once 'db.php'; // it is including connection
 
 function connect() // this function connects to mysql  database
 
 {
  // this step can verify host, users, and password are correct before the connection; otherwise, connection will be failed if one of them is incorrect  
-mysql_connect(DB_HOST,DB_USERS,DB_PASS) or die('cloud not connect to database'. mysql_error());
+mysql_connect(DB_HOST,DB_USER,DB_PASS) or die('cloud not connect to database'. mysql_error());
 
-mysql_select_db(DB_Name);
+mysql_select_db(DB_NAME);
 
 
 }
@@ -28,17 +28,17 @@ function query()
 
 {
  // It can select all the items of database
-&myData = mysql_query("SELECT * FROM  ");
+    $myData = mysql_query("SELECT * FROM users");
 
-while($record = mysql_fetch_array(&myData))
+    while($record = mysql_fetch_array($myData))
 
-{
+    {
 
-echo '<option value ="' . $record[''] . '">' . $record[''] . '</option>';
+        echo '<option value ="' . $record['users'] . '">' . $record['users'] . '</option>';
 
-//<option value=""> </option>
 
-}
+
+    }
 
 }
 
