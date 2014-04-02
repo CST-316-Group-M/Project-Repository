@@ -51,9 +51,10 @@ else
       <div class="hboxed2"> </div>
       <div class="navbar">
             <ul>
-                <div class="bar"><a href="#">Home</a></div> 
-                <div class="bar"><a href="#">Directory</a></div>
+                <div class="bar"><a href="http://cst316m.no-ip.org/Mainhub_Dir/.index.php">Home</a></div> 
+                <div class="bar"><a href="#">User Directory</a></div>
                 <div class="bar"><a href="#">How to</a></div> 
+                <div class="bar"><a href="http://cst316m.no-ip.org/Profile/.index.php">Profile</a></div> 
                 <div class="bar"><a href="#">Settings</a></div> 
                 <div class="bar"><a href="#">Log Out</a></div> 
             </ul>
