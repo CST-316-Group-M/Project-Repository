@@ -1,0 +1,47 @@
+<!--
+  Christopher McDonald, Group M
+
+  Credit goes to anonymous tree tutorial
+
+  Anything can be changed and reshaped except for the tbody-fileOutput and the input-fileURL
+-->
+
+<html>
+<head>
+
+<title>View Offline Repository</title>
+
+<link rel="stylesheet" type="text/css" href="./header/tree-style.css">
+<script src="./header/jquery-1.11.0.min.js"></script>
+<script src="./header/tree-script.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="page-header">
+      <h1><small>Select the location of your offline repository</small></h1>
+      <small>For non-Chrome users, please select each individual file</small>
+    </div>
+
+    <div class="row">
+      <input id="fileURL" type="file" multiple webkitdirectory />
+
+      <div class="row">
+        <h4>Files in offline repository:</h4>
+        <div style="width:400px; height:500px; line-height:3em; overflow:auto; padding:5px; border:1px solid #CCCCCC;">
+          <table>
+            <tbody id="fileOutput">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
