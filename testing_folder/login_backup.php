@@ -1,3 +1,73 @@
+<?php
+session_start();
+
+if(isset($_SESSION['email']))
+{
+	echo "Welcome, you are logged in";
+}
+
+if(isset($_POST['email']) && isset($_POST['password']))
+{
+	$email = $_POST['email'];
+	$pass = sha1($_POST['password']);
+	
+	$db = connect('root', "CST316groupm");
+	$eval = validate($db, $email, $pass);
+	
+	if($eval != false)
+	{
+		echo "Welcome ".$eval;
+		$_SESSION['user']=$eval;
+		header("location: /mainhub.php");
+	}
+}
+
+	function connect($dbemail,$dbpassword)
+	{
+		try
+		{
+			$db = new PDO('mysql:host=localhost;dbname=CST316',$dbemail, $dbpassword);
+			return $db;
+		}
+		catch(PODException $e)
+		{
+			echo $e;
+			return false;
+		}		
+	}
+
+	function validate($db, $email, $pass)
+	{
+		$myemail = false; 
+		$query = "SELECT email, password FROM users where email = '".$email."' AND password = '".$pass."'";
+		try
+		{
+			$db->beginTransaction();
+			$result = $db->query($query);
+			
+			foreach($result as $row)
+			{
+				$myemail = $row['email'];
+				
+			}
+			
+			$db->commit();
+			return $myemail;
+		}
+		catch(Exception $e){}
+	}
+
+
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 	<!-- CSS inline sheet in the head tag. -->
@@ -15,30 +85,11 @@
 			</style>
 	</head> 
 
-
-	<script language="javascript">
-	<!--//
-/*This Script allows people to enter by using a form that asks for a
-UserID and Password*/
-	function pasuser(form) {
-		if (form.id.value=="JavaScript") { 
-			if (form.pass.value=="Kit") {              
-				location="mainhub.html" 
-			} else {
-				alert("Invalid Credentials")
-				location="mainhub.html"
-			}
-		} else {  alert("Invalid Credentials")
-	}
-}
-	//-->
-	<?php 
-	$email = $_POST['email'];
-	$password = $_POST['password'];	 
-	if((!isset($email)) || (!isset($password))) { //if the email or password is not set then it requires login info
-	?>
 	</script>
 	<h1 class="logo"><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Simplest Way To Stay Up To Date.</i></h1>
+		
+		<form action="login.php" method = "post"><!-- This is the PHP file its calling when the user hits the login button -->
+		
 		<div class="login">
 		<center>
 		<div class="table">		
@@ -51,21 +102,22 @@ UserID and Password*/
 						<p><b>Email:</b></p>
 					</td>
 					<td width="200px">
-					<form name="login">&nbsp;<input name="email" type="text"></td>
+					<form name="login">&nbsp;<input name="email" type="text" id="email"></td>
 					<td width="60px"></td>
 				</tr>
 				<tr>
 					<td align="right">
 					<p><b>Password:</b></p></td>
-					<td>&nbsp;<input name="password" type="password"></td>
+					<td>&nbsp;<input name="password" type="password" id="password"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td align="center">
-					<input type="button" value="Login" onClick="pasuser(this.form)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></form>
+					<input type="submit" name="Submit" value="Login">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></form>
 					<td></td>
 				</tr>
+				</form>
 				<tr>
 					<td></td>
 					<td align="left">&nbsp;&nbsp;&nbsp;<a href="#forgotpass">Forgot your password?</a></td>
@@ -81,31 +133,6 @@ UserID and Password*/
 			</div>
 			</center>
 		</div>
-		<?php
-			} else {   
-				//connect to database 
-				$con = mysqli_connect("localhost","webauth","webauth");
-
-				//select the database 
-				$sel = mysqli_select_db($con, 'auth');
-
-				//query for correct user + password combo
-				$query = "SELECT * FROM users WHERE email = '".$email."' and password = '".$password."'";
-				
-				//running query
-				$result = mysqli_query($con, $query);		 		
-			 
-	 			$row = mysqli_fetch_row($result);
-				$count = $row[0];
-
-				if ($count == 0) {
-					echo "You did it!";
-				}
-				else {
-					echo "Authentication failed.";
-				}
-				 
-			}
-		?>	
+	
 	</body>
 </html>
