@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 Original Author: Christopher McDonald
 Contributing Author(s): 
