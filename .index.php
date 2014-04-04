@@ -205,21 +205,15 @@ for ($index = 0; $index < $indexCount; $index++) {
             $size = pretty_filesize($fullname);
             $sizekey = filesize($fullname);
         }
-		?>
-			<td align="center" bgcolor="#FFFFFF">
-			<input name="checkbox[]" type="checkbox" id="checkbox[]" value="<? echo $rows['id']; ?>">
-			</td>
-		<?php
+		
         // Output
         echo("
 		<tr class='$class'>
 			<td><a href='$namehref'$favicon class='name'>$name</a></td>
 			<td><a href='$namehref'>$extn</a></td>
 			<td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
-			<td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td> 
-			
-			
-		 </tr>");
+			<td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>" . '
+			<td align="center"><form action="" method="POST"> <input name="checkbox[]" type="checkbox" id="checkbox[]" value=""></td>' . "</tr>");
     }
 }
 ?>
