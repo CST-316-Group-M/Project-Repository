@@ -1,0 +1,48 @@
+/*
+  Christopher McDonald, Group M
+
+  Credit goes to anonymous tree tutorial
+
+  levels made infinite in the js file
+  collapse/toggle creates the clickable button on a folder to hide and show child items
+  child is a placeholder to allow items to have icons while not having a clickable button
+  history creates the H icon which shows the revision history of the item
+*/
+
+.level td:first-child { border:1px solid #eee; }
+.collapse .toggle { background:url("./icon/collapse.gif"); background-repeat:no-repeat; }
+.expand .toggle { background:url("./icon/expand.gif"); background-repeat:no-repeat; }
+.toggle { height:10px; width:9px; display:inline-block; }
+.child { width:9px; display:inline-block; }
+.history { background:url("./icon/history.png"); background-repeat:no-repeat; height:15px; width:16px; display:inline-block; }
+
+/*
+  Credit goes to Addy Osmani for his webkitdirectory tutorial (albeit very little)
+
+  container and row margins shape the page, and can be removed in the real page
+  The type styles adds the image to each item in the tree. Needs a more complete selection
+  of icons, as it currently only shows common files, and makes the rest blank
+*/
+
+.container { margin:20px }
+.row { margin:10px }
+span[class*='type-'] { background:url(./icon/blank.png); background-repeat:no-repeat; }
+span[class*='type-folder'] { background:url(./icon/folder.png); background-repeat:no-repeat; }
+span[class*='type-html'] { background:url(./icon/html.png); background-repeat:no-repeat; }
+span[class*='type-htm'] { background:url(./icon/html.png); background-repeat:no-repeat; }
+span[class*='type-php'] { background:url(./icon/html.png); background-repeat:no-repeat; }
+span[class*='type-bmp'] { background:url(./icon/image.png); background-repeat:no-repeat; }
+span[class*='type-png'] { background:url(./icon/image.png); background-repeat:no-repeat; }
+span[class*='type-jpg'] { background:url(./icon/image.png); background-repeat:no-repeat; }
+span[class*='type-jpeg'] { background:url(./icon/image.png); background-repeat:no-repeat; }
+span[class*='type-gif'] { background:url(./icon/image.png); background-repeat:no-repeat; }
+span[class*='type-css'] { background:url(./icon/css.png); background-repeat:no-repeat; }
+span[class*='type-js'] { background:url(./icon/js.png); background-repeat:no-repeat; }
+span[class*='type-md'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
+span[class*='type-txt'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
+span[class*='type-doc'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
+span[class*='type-docx'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
+span[class*='type-md'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
+span[class*='type-pdf'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
+span[class*='type-odt'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
+span[class*='type-rtf'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
