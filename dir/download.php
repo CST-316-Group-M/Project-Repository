@@ -5,6 +5,14 @@
 
 //This code lists all files in current directory (can be changed).
 //This skips "." and ".." for cleanliness
+
+//This part of the code should force mime settings to force download
+	switch(strtolower(substr(strrchr($file_name, '.'), 1))) {
+		case 'pdf': $mime = 'application/pdf'; break;
+		case 'zip': $mime = 'application/zip'; break;
+		case 'jpeg':
+		case 'jpg': $mime = 'image/jpg'; break;
+		default: $mime = 'application/force-download';
   if ($handle = opendir('/var/www/root System/jtsmit11/Work')) {
     while (false !== ($file = readdir($handle))) {
       if ($file != "." && $file != "..") {

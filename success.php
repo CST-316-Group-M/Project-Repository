@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 //comments needed!
+=======
+>>>>>>> 29bceee264462301e9cb40dcb3de5e1bc725f896
 if (isset($_POST['Button'])) {
 	echo "HELLO!";
 	header('Location: /login.php');
