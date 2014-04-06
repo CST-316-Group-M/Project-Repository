@@ -4,7 +4,7 @@ Please review the readme document in the main folder for more information about 
 
 Author: Chris Coyer
 Co-authors: Jordan Smith
-Last Updated: 4/3/14
+Last Updated: 4/5/14
 */  
 session_start();
 $uname = $_SESSION['email'];
