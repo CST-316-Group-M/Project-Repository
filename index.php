@@ -21,11 +21,11 @@ connect();
  
 			<p align="center">
  
-			<select name="USERS">
+			<ul name="USERS" >
 
 			<?php query() ?>
 
-				</select>
+				</ul>
 
 					<?php close() ?>
 				</p>

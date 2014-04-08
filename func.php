@@ -28,13 +28,13 @@ function query()
 
 {
  // It can select all the items of database
-    $myData = mysql_query("SELECT * FROM users");
+    $myData = mysql_query("SELECT * FROM users ");
 	
     while($record = mysql_fetch_array($myData))
 
     {
 
-        echo '<option value ="' . $record['Users'] . '">' . $record['Users'] . '</option>';
+        echo '<li value ="' . $record['Users'] . '">' . $record['Users'] . '</li>';
 
 
 
