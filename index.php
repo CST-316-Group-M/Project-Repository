@@ -9,8 +9,9 @@ connect();
 <!doctype html>
 <html>
 	<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 		<title> Dynamiclist - </title>
-		<h1 align="center">Users List</h1>
+		<h1>Users List</h1>
 	</head>
 	
 	<body>
