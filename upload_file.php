@@ -1,5 +1,5 @@
 <?php
-$URL = "http://cst316m.no-ip.org/dir/.index.php";
+$URL = "http://localhost/Server%20Replica/index_main.php";
 if ($_FILES["file"]["error"] > 0)
   {
   echo "Error: " . $_FILES["file"]["error"] . "<br>";
@@ -13,7 +13,7 @@ else
     else
       {
       move_uploaded_file($_FILES["file"]["tmp_name"],
-      "../root System/jtsmit11/Work/" . $_FILES["file"]["name"]);
+      "./users/users/asu@asu.edu/test/" . $_FILES["file"]["name"]);
 	  header ("Location: $URL");
       }
 	}

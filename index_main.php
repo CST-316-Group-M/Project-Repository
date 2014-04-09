@@ -4,10 +4,10 @@ Please review the readme document in the main folder for more information about 
 
 Author: Chris Coyer
 Co-authors: Jordan Smith
-Last Updated: 4/5/14
+Last Updated: 4/3/14
 */  
 session_start();
-$uname = $_SESSION['email'];
+//$uname = $_SESSION['email'];
 // Adds pretty filesizes
 function pretty_filesize($file) 
 {
@@ -27,13 +27,15 @@ date_default_timezone_set("America/Phoenix");
 $hide = "Test";
 if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) 
 {
-    $currdir = "./users/$uname";
+    //$currdir = "./users/$uname";
+    $currdir = "./users/users/asu@asu.edu";
 } 
 else 
 {
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
-if ($currdir == "./users/$uname") 
+//if ($currdir == "./users/$uname") 
+if ($currdir == "./users/users/asu@asu.edu") 
     $label = "Root";
 else 
 {
@@ -48,14 +50,14 @@ else
         <meta charset="UTF-8">
         <link rel="shortcut icon" href="./.favicon.ico">
         <title>Group M Project Management</title>
-        <link rel="stylesheet" type="text/css" href="mainhub.css">
-        <link rel="stylesheet" type="text/css" href="template.css">
-        <link rel="stylesheet" href="./.style.css">
+        <link rel="stylesheet" type="text/css" href="style_main.css">
+        <link rel="stylesheet" type="text/css" href="template_main.css">
+        <link rel="stylesheet" href="./style.css">
         <script src="./.sorttable.js"></script>
     </head>
     <body>
         <div class="container1">
-        <div class="username"><h1><?=$uname?></h1></div>
+        <div class="username"><h1>uname</h1></div>
         <div class="hboxed"><h1>Group M Project Management</h1></div>
         <div class="messenger"><center><h3>Messenger Client</h3></center></div>
         <div class="hboxed2"> </div>
@@ -80,9 +82,10 @@ else
                 <thead>
                     <tr>
                         <th>File Name</th>
-                        <th>Type</th>
+                         <th>Type</th>
                         <th>Size</th>
                         <th>Last Modified</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -238,8 +241,8 @@ for ($index = 0; $index < $indexCount; $index++)
             <td><a href='$namehref'$favicon class='name'>$name</a></td>
             <td><a href='$namehref'>$extn</a></td>
             <td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
-            <td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>
-        </tr>");
+            <td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>" . '
+            <td align="center"><form action="" method="POST"> <input name="checkbox[]" type="checkbox" id="checkbox[]" value=""></td>' . "</tr>");
     }
 }
 ?>
@@ -248,6 +251,13 @@ for ($index = 0; $index < $indexCount; $index++)
             </table>
 
         <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
+        <form action="upload_file.php" method="post"
+        enctype="multipart/form-data">
+        <label for="file">Filename:</label>
+        <input type="file" name="file" id="file"><br>
+        <input type="submit" name="submit" value="Submit">
+    </form>
         </div>
+
     </body>
 </html>
