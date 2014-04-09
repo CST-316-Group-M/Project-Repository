@@ -36,6 +36,10 @@ else
     $path = explode('/', $currdir);
     $label = $path[count($path)-1]; 
 }
+
+//create new dir
+mkdir("/wamp/www/cst316/users/$username/$userdir/", 0777);			
+echo "Creating new directory: " . $userdir . " for user: " . $username;
 ?>
 
 <!doctype html>

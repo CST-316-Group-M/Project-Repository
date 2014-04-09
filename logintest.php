@@ -6,22 +6,24 @@ Contributing Author(s):
 */
 
 <?php
+	session_start();
+	//require once "login.php";
 
 class LoginTest extends PHPUnit_Framework_TestCase {
 	
-	public function sessionTest() {
+	public function testSession() {
+		$this->assertEmpty($_SESSION['email']);
+	}
+
+	public function testPost() {
+
+	}
+
+	public function testConnect() {
 		
 	}
 
-	public function postTest() {
-
-	}
-
-	public function connectTest() {
-		
-	}
-
-	public function validateTest() {
+	public function testValidate() {
 
 	}
 }
