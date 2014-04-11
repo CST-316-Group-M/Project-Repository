@@ -11,7 +11,13 @@ Contributing Author(s):
 
 class LoginTest extends PHPUnit_Framework_TestCase {
 	
+	
+	
 	public function testSession() {
+		$email = 'zeblehblehbleh@gmail.com';
+		$_SESSION['email'] = $email;
+		//$_SESSION = array();
+		//session_destroy();
 		$this->assertEmpty($_SESSION['email']);
 	}
 
@@ -26,6 +32,9 @@ class LoginTest extends PHPUnit_Framework_TestCase {
 	public function testValidate() {
 
 	}
+	
+	
+	
 }
 
 ?>
