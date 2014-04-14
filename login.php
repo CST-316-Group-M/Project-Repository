@@ -17,8 +17,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
 	if($eval != false)
 	{
 		echo "Welcome ".$eval;
-		$_SESSION['user']=$eval;
-		header("location: ./Mainhub_Dir/.index.php");
+		$_SESSION['email']=$eval;
+		header("location: index_main.php");
 	}
 }
 

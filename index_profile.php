@@ -58,12 +58,12 @@ else
       <div class="hboxed2"> </div>
       <div class="navbar">
             <ul>
-                <div class="bar"><a href="../Mainhub_Dir/.index.php">Home</a></div> 
+           <div class="bar"><a href="index_main.php">Home</a></div> 
                 <div class="bar"><a href="#">Directory</a></div>
                 <div class="bar"><a href="#">How to</a></div> 
-                <div class="bar"><a href="#">Settings</a></div> 
-                <div class="bar"><a href="#">Log Out</a></div> 
-				<div class="bar"><a href="../Profile/.index.php">Profile</a></div>
+                <div class="bar"><a href="settings.php">Settings</a></div> 
+                <div class="bar"><a href="index_profile.php">Profile</a></div>
+                <div class="bar"><a href="logout.php">Log Out</a></div> 
             </ul>
             
         </div>

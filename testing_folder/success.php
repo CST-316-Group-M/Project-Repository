@@ -1,0 +1,1 @@
+<html> If you are seeing this then password reset worked!</html>

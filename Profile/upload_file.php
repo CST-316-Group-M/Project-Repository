@@ -1,6 +1,5 @@
 <?php
-$uploaddir = $_SESSION["upload"];
-$URL = "index_main.php";
+$URL = "http://cst316m.no-ip.org/dir/.index.php";
 if ($_FILES["file"]["error"] > 0)
   {
   echo "Error: " . $_FILES["file"]["error"] . "<br>";
@@ -14,7 +13,7 @@ else
     else
       {
       move_uploaded_file($_FILES["file"]["tmp_name"],
-      "$uploaddir" . $_FILES["file"]["name"]);
+      "../root System/jtsmit11/Private Repo/" . $_FILES["file"]["name"]);
 	  header ("Location: $URL");
       }
 	}
