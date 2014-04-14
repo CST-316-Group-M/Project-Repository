@@ -2,7 +2,7 @@
 Author: Jacob Reber
 Last Revised: 4/14/14
 
-This is php file for the user profile.
+This is php file to display the user profile.
 -->
 <!DOCTYPE html>
 
