@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if(!session_is_registered(myusername)){
+header("location:login.html");
+}
+?>
+
+<html>
+<body>
+Login Successful
+</body>
+</html>
+<html>
+<head>
+<title>Group M Project Managament</title>
+<link rel="stylesheet" type="text/css" href="mainhub.css">
+</head>
+
+<body>
+<div class="container">
+	<div class="username"><h1>Jordan Smith</h1></div>
+ 	<div class="hboxed"><h1>Group M Project Managment</h1></div>
+    <div class="messenger"><center><h3>Messenger Client</h3></center></div>
+<div class="hboxed2"> </div>
+	<div class="navi"><center><h3>Navigation Bar</h3></center></div>
+<div class="RepoMang"></div>
+    <table class="repoTable">
+<tr>
+  <td width="90%"><b>Name of Repositories</b></th>		
+  <td width="10%"><b>Status</b></th>
+  </tr>
+<tr>
+<tr>
+  <td>
+  <a href="http://cst316m.no-ip.org/dir/.index.php" target="_new">Work</a>
+  </td>
+  <td>Private</td>		
+  </tr>
+<tr>
+  <td><a href="http://cst316m.no-ip.org/dir2/.index.php" target="_new">CST 316</a></td>
+  <td>Private</td>		
+</tr>
+<tr>
+  <td><a href="http://cst316m.no-ip.org/dir3/.index.php" target="_new">CST 420</a></td>
+  <td>Public</td>		
+</tr>
+</table>
+    
+    <div class="widget2"></div>
+    <div class="widget3"></div>
+<div class="widget4"></div>  
+	<div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 1st, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
+	<div class="bboxed2"> </div>
+</body>
+</html>
