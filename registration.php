@@ -1,14 +1,22 @@
+<!--
+Original Author: Jacob/Lauren
+Contributors: Jason
+Description: inserts new user into users table in database
+
+TODO: Apply functions to all PHP code
+-->
 <html>
 	<body>
 	<?php
+	session_start();
 	if(empty($_POST['fname']))
-	{echo "First name is blank!";}
+	{echo "";}
 	if(empty($_POST['lname']))
-	{echo "Last name is blank!";}
+	{echo "";}
 	if(empty($_POST['email']))
-	{echo "eamil is blank!";}
+	{echo "";}
 	if(empty($_POST['password']))
-	{echo "password is blank!";}
+	{echo "";}
 	
 	
 	
@@ -60,12 +68,18 @@
 				$result = mysql_query($db, $query2);
 					
 					if (!$result) {
-						echo "Registration Failed.";
-						return false;
+						//$arr = explode("@", $email);			//php explode function splits strings
+						//$parsedusername = $arr[0];			//storing split string in new var
+						$_SESSION['email'] = $email; 	 		//creating/checking session variable/change to parsedusername later						
+						echo "You've Successfully Registered!";
+						mkdir("/var/www/users/$email/", 0777); //permissions for rwx
+						header('Location: /success.php');
+						return true;
 					}
 					else {
-						echo "You've Successfully Registered!";
-						return true;	
+						
+						echo "Registration Failed.";
+						return false;
 					}
 				}
 			else {
@@ -89,6 +103,18 @@
 	
 	<!DOCTYPE html>
 	<html>
+	<style>
+		.logo  { position:relative; width:600px; height:50px; top:115px; margin-left:auto; margin-right:auto; }
+				.login { position:relative; width:800px; height:325px; top:100px; margin-left:auto; margin-right:auto; }
+				.table { position:relative; top:0px; left:0px; bottom:0px; right:0px; align:left;}
+				.login { border:3px solid #a1a1a1;  width:400px; border-radius:10px; padding: 10px 10px; 
+				background-image:url('./img/box.jpg');}
+				td {height:10px; }
+				table {background:transparent;}
+				body { background-image:url('./img/wallpaper.jpg'); }	
+			</style>
+		<div class="login">
+		<center>
 		<h1>Almost There!</h1>
 		<b>We just need some information from you.</b>
 		<form method="post" action="registration.php">
@@ -96,16 +122,11 @@
 		<p>Last Name: <input type="text" name="lname"></p>
 		<p>Password: <input type="password" name="password"></p>
 		<p>Email: <input type="email" name="email"></p>
-		<p><input type="submit" name="submit" value="Register"></p>
-		
-		
 
-	<!-- 
-	
-	KNOWN ISSUES/NEEDED FEATURES
-	- ACCOUNT DUPLICATES
-	- FILTER INPUT
-	
-	-->
+
+		<p><input type="submit" name="submit" value="Register"></p>
+		</div>
+
+</style>
 	</body>
 </html>
