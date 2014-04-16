@@ -1,7 +1,10 @@
 <html>
 	<body>
 	<?php
+<<<<<<< HEAD
 	session_start();
+=======
+>>>>>>> f86fabf64706d439fe1d46981ce24b39bae646d1
 	if(empty($_POST['fname']))
 	{echo "First name is blank!";}
 	if(empty($_POST['lname']))
@@ -65,11 +68,15 @@
 						return false;
 					}
 					else {
+<<<<<<< HEAD
 						$arr = explode("@", $email);					//php explode function splits strings
 						$parsedusername = $arr[0];						//storing split string in new var
 						$_SESSION['parsedusername'] = $parsedusername; 	//creating/checking session variable						
 						echo "You've Successfully Registered!";
 						mkdir("/var/www/users/$parsedusername/", 0777); //permissions for rwx
+=======
+						echo "You've Successfully Registered!";
+>>>>>>> f86fabf64706d439fe1d46981ce24b39bae646d1
 						return true;	
 					}
 				}
@@ -103,6 +110,18 @@
 		<p>Email: <input type="email" name="email"></p>
 		<p><input type="submit" name="submit" value="Register"></p>
 		
+<<<<<<< HEAD
 	
+=======
+		
+
+	<!-- 
+	
+	KNOWN ISSUES/NEEDED FEATURES
+	- ACCOUNT DUPLICATES
+	- FILTER INPUT
+	
+	-->
+>>>>>>> f86fabf64706d439fe1d46981ce24b39bae646d1
 	</body>
 </html>

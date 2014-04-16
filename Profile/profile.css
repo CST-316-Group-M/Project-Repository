@@ -1,0 +1,56 @@
+/* 
+Author: Jordan Smith
+Last Revise: 3/23/14
+
+This is the CSS File for profile.html
+*/
+
+img.user_pic
+{
+	position:absolute;
+	width: 350px;
+	height: auto;
+	left: 50px;
+	top: 100px;
+	border: 5px solid black;
+	box-shadow: 15px 15px 10px -5px rgba(0,0,0,0.5);
+}
+
+.Header
+{
+	position: absolute;
+	font-size: 68px;
+	top: 100px;
+	left: 410px;
+	font-weight: bold;
+	background-color: #FF6F00;
+	width: 75%;
+	-webkit-border-top-right-radius: 30px 30px; 
+	-webkit-border-bottom-right-radius: 30px 30px;
+	box-shadow: 10px 10px 10px -5px rgba(0,0,0,0.5);
+}
+
+.education
+{
+	position:absolute;
+	width: 500px;
+	height:500px;
+	top: 200px;
+	left: 450px;
+	background-color: #A4A4A4;
+	border-style: inset;
+	border-color: grey;
+	padding-left: 25px;
+}
+.work
+{
+	position:absolute;
+	width: 700px;
+	height:500px;
+	top: 200px;
+	left: 1080px;
+	background-color: #A4A4A4;
+	border-style: inset;
+	border-color: grey;
+	padding-left: 25px;
+}

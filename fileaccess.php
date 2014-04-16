@@ -8,12 +8,20 @@
 	**/
 	class FileAccess {
 		
+<<<<<<< HEAD
 		//WORKS, NEED REGISTRATION PAGE TO MAKE INTIAL FOLDER THAT IS THE SAME
 		//NAME AS THE PRIMARY KEY (EMAIL) FOR IT TO WORK
 		function createDir($userdir, $username) {	
 		//if(!exists)
 			mkdir("/wamp/www/cst316/users/$username/$userdir/", 0777);			//CHANGE THIS FILEPATH WHEN ON SERVER
 			echo "Creating new directory: " . $userdir . " for user: " . $username;
+=======
+		// 
+		function createDir($userdir, $username) {
+		//if(!exists)
+			//mkdir("/var/www/users/$username/$userdir/", 0777);			//CHANGE THIS FILEPATH WHEN ON SERVER
+			echo "Creating new directory: " . $userdir . "/ for user: " . $username;
+>>>>>>> f86fabf64706d439fe1d46981ce24b39bae646d1
 		}
 		
 		// will be implemented
@@ -28,6 +36,7 @@
 		
 		// will be implemented
 		function removeFile() {
+<<<<<<< HEAD
 		
 		}
 		
@@ -40,6 +49,17 @@
 			closedir($dir);
 				}
 			}
+=======
+			$uname;
+			//get file selection name (may need code borrowed from listing directories)
+			//$uname = (filename)
+			if (check file within old database folder)
+			{ rm $uname /f (force removal) }
+			else { create copy within old database folder then delete}
+		
+			
+		}
+>>>>>>> f86fabf64706d439fe1d46981ce24b39bae646d1
 	}
 
 ?>
