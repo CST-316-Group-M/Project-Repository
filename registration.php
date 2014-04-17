@@ -23,19 +23,25 @@ TODO: Apply functions to all PHP code
 	if(isset($_POST['fname']) && !empty($_POST['fname']) && isset($_POST['lname']) && !empty($_POST['lname']) 
 	&& isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['password']) && !empty($_POST['password']))
 	{
-		$db = connect('root','CST316groupm');
+		$db = connect('webauth','webauth');
 		if($db!=false)
 		{
 				register($db);
 			
 		}
 	}
-	
+	function creation($user, $con){
+		//This function creates the necessary directories, adds to the default group, makes a default picture display,
+		mkdir("/var/www/users/$user/", 0777); //permissions for rwx
+		mkdir("/var/www/users/$user/.set/", 0777);
+		mkdir("/var/www/users/$user/.old/", 0777);
+		copy ("/var/www/user_picture/default.png", "/var/www/users/$user/.set/$user.png"); //courtesy of http://findicons.com/ (OpenGL license)
+		}
 	function connect($dbuser,$dbpassword)
 	{
 		try
 		{
-			$db = new PDO('mysql:host=localhost;dbname=CST316','root','CST316groupm');
+			$db = new PDO('mysql:host=localhost;dbname=CST316','webauth','webauth');
 			return $db;
 		}
 		catch(PODException $e)
@@ -51,43 +57,41 @@ TODO: Apply functions to all PHP code
 		$lname = $_POST['lname'];
 		$email = $_POST['email'];
 		$password = sha1($_POST['password']);
-		
+		$con=mysqli_connect("localhost","webauth","webauth","CST316");  //PHP doesn't like using $db for some reason - Jason
 		$query = "SELECT * FROM users WHERE email = '".$email."'";
-		$dup = mysql_query($db, $query);
-		//$dup = mysql_query("SELECT username FROM users WHERE username='".$_POST['username']."'");
-		if (!$dup) {
-				$query2 = "INSERT INTO users(fname,lname,email,password) values('".$fname."','".$lname."','".$email."','".$password."')";
-				try
+		$dup = mysqli_query($con, $query);
+		$dup_rows = mysqli_fetch_row($dup);
+	
+		if ($dup_rows) {
+				header('Location: /failed.php');
+				return false;
+				}
+		else {
+			$query2 = "INSERT INTO users(fname,lname,email,password) values('".$fname."','".$lname."','".$email."','".$password."')";
+			try
 				{
-					$db->beginTransaction();
-					$db->exec($query2);
-					$db->commit();
+				$db->beginTransaction();
+				$db->exec($query2);
+				$db->commit();
 				}
-				catch(Exception $e){}
+			catch(Exception $e){}
 				
-				$result = mysql_query($db, $query2);
-					
-					if (!$result) {
-						//$arr = explode("@", $email);			//php explode function splits strings
-						//$parsedusername = $arr[0];			//storing split string in new var
-						$_SESSION['email'] = $email; 	 		//creating/checking session variable/change to parsedusername later						
-						echo "You've Successfully Registered!";
-						mkdir("/var/www/users/$email/", 0777); //permissions for rwx
-						header('Location: /success.php');
-						return true;
+			$result = mysql_query($db, $query2);
+				if (!$result) {
+					$arr = explode("@", $email);			//php explode function splits strings
+					$user = $arr[0];			//storing split string in new var
+					$_SESSION['user'] = $user; 	 		//creating/checking session variable/change to parsedusername later						
+					$_SESSION['name'] = $fname;
+					creation($user,$con);
+					header('Location: /success.php');
+					return true;
 					}
-					else {
+				else {
 						
-						echo "Registration Failed.";
-						return false;
-					}
-				}
-			else {
-				//header('Location: /failed.php');
-				echo "Cannot register; account already exists.";
-				return false;				
+					echo "Registration Failed.";
+					return false;
+					}				
 			}
-
 		/*try
 		{
 			$db->beginTransaction();

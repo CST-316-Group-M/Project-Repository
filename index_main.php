@@ -7,7 +7,8 @@ Co-authors: Jordan Smith
 Last Updated: 4/3/14
 */ 
 session_start();
-$uname = $_SESSION['email'];
+$uname = $_SESSION['user'];
+$fname = $_SESSION['name'];
 
 // Adds pretty filesizes
 function pretty_filesize($file) 
@@ -59,7 +60,7 @@ else
     <body>
 		
         <div class="container1">
-        <div class="username"><h1><?=$uname?></h1></div>
+        <div class="username"><h1><?=$fname?></h1></div>
         <div class="hboxed"><h1>Group M Project Management</h1></div>
         <div class="messenger"><center><h3>Messenger Client</h3></center></div>
         <div class="hboxed2"> </div>
@@ -242,12 +243,13 @@ for ($index = 0; $index < $indexCount; $index++)
     
       // Output
 	  //Leave next line out until we can fix. -Jason
-	  // . '<td align="center"><form action="" method="POST"> <input name="checkbox[]" type="checkbox" id="checkbox[]" value=""></td>' . 
+	  // 
 	  echo("<tr class='$class'>
             <td><a href='$namehref'$favicon class='name'>$name</a></td>
             <td><a href='$namehref'>$extn</a></td>
             <td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
-            <td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td></tr>");
+            <td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>" .
+			'<td align="center"><form action="" method=""> <input name="checkbox[]" type="checkbox" id="checkbox[]" value=""></form></td>' . "</tr>");
     }
 }
 

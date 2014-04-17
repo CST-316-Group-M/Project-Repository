@@ -6,7 +6,9 @@ Author: Chris Coyer
 Co-authors: Jordan Smith
 Last Updated: 4/3/14
 */  
-
+session_start();
+$uname = $_SESSION['user'];
+$fname = $_SESSION['name'];
 // Adds pretty filesizes
 function pretty_filesize($file) 
 {
@@ -67,8 +69,8 @@ else
             </ul>
             
         </div>
-      <img class="user_pic" src="user_picture\picture.jpg">
-      <div class="Header"> Jordan Smith</div>
+      <img class="user_pic" src="..\users\<?=$uname?>\.set\default.png">
+      <div class="Header"><?=$fname?></div>
       <div class="education"> 
 
     <h1><u>EDUCATION</u></h1>
