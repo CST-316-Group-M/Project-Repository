@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 //comments needed!
+=======
+
+>>>>>>> 29bceee264462301e9cb40dcb3de5e1bc725f896
 $status=$_SERVER['REDIRECT_STATUS'];
 $codes=array(
        400 => array('400 Bad Request', 'The request cannot be fulfilled due to bad syntax.'),

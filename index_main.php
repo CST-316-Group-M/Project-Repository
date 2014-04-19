@@ -1,8 +1,18 @@
 <?php
-	
+/*index_main.php was part of an original file that was created by Chris Coyer. He is the author of css-tricks.com.
+Please review the readme document in the main folder for more information about the permission to use his code.
+
+Author: Chris Coyer
+Co-authors: Jordan Smith
+Last Updated: 4/3/14
+*/ 
+session_start();
+$uname = $_SESSION['user'];
+$fname = $_SESSION['name'];
 
 // Adds pretty filesizes
-function pretty_filesize($file) {
+function pretty_filesize($file) 
+{
     $size = filesize($file);
     if ($size < 1024) {
         $size = $size . " Bytes";
@@ -15,25 +25,25 @@ function pretty_filesize($file) {
     }
     return $size;
 }
-
 date_default_timezone_set("America/Phoenix");
-
 $hide = "Test";
-
-
-if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) {
-    $currdir = "../root System/jtsmit11/CST 420";
-} else {
+if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) 
+{
+    $currdir = "./users/$uname";
+	$_SESSION['upload'] = $currdir;
+} 
+else 
+{
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
-
-if ($currdir == "../root System/jtsmit11") 
+if ($currdir == "./users/$uname") 
+ 
     $label = "Root";
-else {
+else 
+{
     $path = explode('/', $currdir);
     $label = $path[count($path)-1]; 
 }
-
 ?>
 
 <!doctype html>
@@ -41,34 +51,59 @@ else {
     <head>
         <meta charset="UTF-8">
         <link rel="shortcut icon" href="./.favicon.ico">
-        <title><?= $label ?></title>
-
-        <link rel="stylesheet" href="./.style.css">
+        <title>Group M Project Management</title>
+        <link rel="stylesheet" type="text/css" href="style_main.css">
+        <link rel="stylesheet" type="text/css" href="template_main.css">
+        <link rel="stylesheet" href="./style.css">
         <script src="./.sorttable.js"></script>
     </head>
-
     <body>
-        <div id="container">
-            <h1><?= $label ?></h1>
+		
+        <div class="container1">
+        <div class="username"><h1><?=$fname?></h1></div>
+        <div class="hboxed"><h1>Group M Project Management</h1></div>
+        <div class="messenger"><center><h3>Messenger Client</h3></center></div>
+        <div class="hboxed2"> </div>
+        <div class="navbar">
+            <ul>
+                <div class="bar"><a href="index_main.php">Home</a></div> 
+                <div class="bar"><a href="#">Directory</a></div>
+                <div class="bar"><a href="#">How to</a></div> 
+                <div class="bar"><a href="settings.php">Settings</a></div> 
+                <div class="bar"><a href="index_profile.php">Profile</a></div>
+                <div class="bar"><a href="logout.php">Log Out</a></div>
 
+            </ul>
+		
+            
+        </div>
+    
+
+        <div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 30th, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
+        <div class="bboxed2"> 
+    </div>
+
+        <div id="container">
             <table class="sortable">
                 <thead>
                     <tr>
                         <th>File Name</th>
-                        <th>Type</th>
+                         <th>Type</th>
                         <th>Size</th>
                         <th>Last Modified</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
 <?php
-
 // Opens directory
 $myDirectory = opendir($currdir);
 
 // Gets each entry
-while ($entryName = readdir($myDirectory)) {
-    $dirArray[] = $entryName;
+while ($entryName = readdir($myDirectory)) 
+{
+    if($entryName != "." && $entryName !=".."){
+        $dirArray[] = $entryName; }
 }
 
 // Closes directory
@@ -79,10 +114,9 @@ $indexCount = count($dirArray);
 
 // Sorts files
 //sort($dirArray);
-
 // Loops through the array of files
-for ($index = 0; $index < $indexCount; $index++) {
-
+for ($index = 0; $index < $indexCount; $index++) 
+{
     // Decides if hidden files should be displayed, based on query above.
     if (substr("$dirArray[$index]", 0, 1) != $hide || ($currdir != '.' && $dirArray[$index] == "..")) {
 
@@ -93,7 +127,7 @@ for ($index = 0; $index < $indexCount; $index++) {
         // Gets File Names
         $name = $dirArray[$index];
         $namehref = ($currdir == "." ? "" : $currdir . '/') . $dirArray[$index];
-	$fullname = $currdir . '/' . $dirArray[$index];
+		$fullname = $currdir . '/' . $dirArray[$index];
 
         // Gets Date Modified
         $modtime = date("M j Y g:i A", filemtime($fullname));
@@ -101,6 +135,8 @@ for ($index = 0; $index < $indexCount; $index++) {
 
 
         // Separates directories, and performs operations on those directories
+        
+    
         if (is_dir($currdir . '/' . $dirArray[$index])) {
             $extn = "&lt;Folder&gt;";
             $size = "&lt;Folder&gt;";
@@ -114,7 +150,7 @@ for ($index = 0; $index < $indexCount; $index++) {
             }
 
             // Cleans up . and .. directories
-            if ($name == ".") {
+            /*if ($name == ".") {
                 $name = ". (Current Directory)";
                 $extn = "&lt;System Dir&gt;";
                 $favicon = " style='background-image:url($namehref/.favicon.ico);'";
@@ -132,8 +168,9 @@ for ($index = 0; $index < $indexCount; $index++) {
                 $namehref = '?' . $prevdir;
             }
             else
-                $namehref = '?' . $namehref;
+                $namehref = '?' . $namehref; */
         }
+        
 
         // File-only operations
         else {
@@ -203,31 +240,30 @@ for ($index = 0; $index < $indexCount; $index++) {
             $size = pretty_filesize($fullname);
             $sizekey = filesize($fullname);
         }
-
-        // Output
-        echo("
-		<tr class='$class'>
-			<td><a href='$namehref'$favicon class='name'>$name</a></td>
-			<td><a href='$namehref'>$extn</a></td>
-			<td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
-			<td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>
-		</tr>");
+    
+      // Output
+	  //Leave next line out until we can fix. -Jason
+	  // 
+	  echo("<tr class='$class'>
+            <td><a href='$namehref'$favicon class='name'>$name</a></td>
+            <td><a href='$namehref'>$extn</a></td>
+            <td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
+            <td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>" .
+			'<td align="center"><form action="" method=""> <input name="checkbox[]" type="checkbox" id="checkbox[]" value=""></form></td>' . "</tr>");
     }
 }
+
 ?>
 
                 </tbody>
             </table>
 
         <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
-        </div>
-        
-  	<form action="upload_file.php" method="post"
-		enctype="multipart/form-data">
-		<label for="file">Filename:</label>
-		<input type="file" name="file" id="file"><br>
-		<input type="submit" name="submit" value="Submit">
-	</form>
-    
+
     </body>
+<form action="upload_file.php" method="post"
+		enctype="multipart/form-data">
+        <label for="file">Filename:</label>
+        <input type="file" name="file" id="file"><br>
+        <input type="submit" name="submit" value="Submit"></form>
 </html>

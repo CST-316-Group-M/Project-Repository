@@ -1,4 +1,11 @@
 <?php
+/*index_main.php was part of an original file that was created by Chris Coyer. He is the author of css-tricks.com.
+Please review the readme document in the main folder for more information about the permission to use his code.
+
+Author: Chris Coyer
+Co-authors: Jordan Smith
+Last Updated: 4/3/14
+*/ 
 session_start();
 $uname = $_SESSION['email'];
 // Adds pretty filesizes
@@ -20,13 +27,14 @@ date_default_timezone_set("America/Phoenix");
 $hide = "Test";
 if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) 
 {
-    $currdir = "../users/$uname";
+    $currdir = "./users/$uname";
 } 
 else 
 {
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
-if ($currdir == "../users") 
+if ($currdir == "./users/$uname") 
+ 
     $label = "Root";
 else 
 {
@@ -41,9 +49,9 @@ else
         <meta charset="UTF-8">
         <link rel="shortcut icon" href="./.favicon.ico">
         <title>Group M Project Management</title>
-        <link rel="stylesheet" type="text/css" href="mainhub.css">
-        <link rel="stylesheet" type="text/css" href="template.css">
-        <link rel="stylesheet" href="./.style.css">
+        <link rel="stylesheet" type="text/css" href="style_main.css">
+        <link rel="stylesheet" type="text/css" href="template_main.css">
+        <link rel="stylesheet" href="./style.css">
         <script src="./.sorttable.js"></script>
     </head>
     <body>
@@ -54,29 +62,19 @@ else
         <div class="hboxed2"> </div>
         <div class="navbar">
             <ul>
-<<<<<<< HEAD
-                <div class="bar"><a href="../Mainhub_Dir/.index.php">Home</a></div> 
-=======
-                <div class="bar"><a href="#">Home</a></div> 
->>>>>>> 29bceee264462301e9cb40dcb3de5e1bc725f896
+                <div class="bar"><a href="index_main.php">Home</a></div> 
                 <div class="bar"><a href="#">Directory</a></div>
                 <div class="bar"><a href="#">How to</a></div> 
-                <div class="bar"><a href="#">Settings</a></div> 
-                <div class="bar"><a href="#">Log Out</a></div> 
-<<<<<<< HEAD
-				<div class="bar"><a href="../Profile/.index.php">Profile</a></div>
-=======
->>>>>>> 29bceee264462301e9cb40dcb3de5e1bc725f896
+                <div class="bar"><a href="settings.php">Settings</a></div> 
+                <div class="bar"><a href="index_profile.php">Profile</a></div>
+                <div class="bar"><a href="logout.php">Log Out</a></div> 
+
             </ul>
             
         </div>
     
 
-<<<<<<< HEAD
         <div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 30th, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
-=======
-        <div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 1st, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
->>>>>>> 29bceee264462301e9cb40dcb3de5e1bc725f896
         <div class="bboxed2"> 
     </div>
         <div id="container">
@@ -84,9 +82,10 @@ else
                 <thead>
                     <tr>
                         <th>File Name</th>
-                        <th>Type</th>
+                         <th>Type</th>
                         <th>Size</th>
                         <th>Last Modified</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -97,8 +96,8 @@ $myDirectory = opendir($currdir);
 // Gets each entry
 while ($entryName = readdir($myDirectory)) 
 {
-	if($entryName != "." && $entryName !=".."){
-		$dirArray[] = $entryName; }
+    if($entryName != "." && $entryName !=".."){
+        $dirArray[] = $entryName; }
 }
 
 // Closes directory
@@ -130,8 +129,8 @@ for ($index = 0; $index < $indexCount; $index++)
 
 
         // Separates directories, and performs operations on those directories
-		
-	
+        
+    
         if (is_dir($currdir . '/' . $dirArray[$index])) {
             $extn = "&lt;Folder&gt;";
             $size = "&lt;Folder&gt;";
@@ -165,7 +164,7 @@ for ($index = 0; $index < $indexCount; $index++)
             else
                 $namehref = '?' . $namehref;
         }
-		
+        
 
         // File-only operations
         else {
@@ -235,15 +234,15 @@ for ($index = 0; $index < $indexCount; $index++)
             $size = pretty_filesize($fullname);
             $sizekey = filesize($fullname);
         }
-	
+    
         // Output
         echo("
         <tr class='$class'>
             <td><a href='$namehref'$favicon class='name'>$name</a></td>
             <td><a href='$namehref'>$extn</a></td>
             <td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
-            <td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>
-        </tr>");
+            <td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>" . '
+            <td align="center"><form action="" method="POST"> <input name="checkbox[]" type="checkbox" id="checkbox[]" value=""></td>' . "</tr>");
     }
 }
 ?>
@@ -252,6 +251,13 @@ for ($index = 0; $index < $indexCount; $index++)
             </table>
 
         <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
+        <form action="upload_file.php" method="post"
+        enctype="multipart/form-data">
+        <label for="file">Filename:</label>
+        <input type="file" name="file" id="file"><br>
+        <input type="submit" name="submit" value="Submit">
+    </form>
         </div>
+
     </body>
 </html>

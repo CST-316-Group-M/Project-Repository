@@ -1,8 +1,17 @@
 <?php
-	
+/*index_profile.php was part of an original file that was created by Chris Coyer. He is the author of css-tricks.com.
+Please review the readme document in the main folder for more information about the permission to use his code.
 
+Author: Chris Coyer
+Co-authors: Jordan Smith
+Last Updated: 4/3/14
+*/  
+session_start();
+$uname = $_SESSION['user'];
+$fname = $_SESSION['name'];
 // Adds pretty filesizes
-function pretty_filesize($file) {
+function pretty_filesize($file) 
+{
     $size = filesize($file);
     if ($size < 1024) {
         $size = $size . " Bytes";
@@ -15,25 +24,23 @@ function pretty_filesize($file) {
     }
     return $size;
 }
-
 date_default_timezone_set("America/Phoenix");
-
 $hide = "Test";
-
-
-if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) {
-    $currdir = "../root System/jtsmit11/CST 316";
-} else {
+if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) 
+{
+    $currdir = "../root System/jtsmit11/Public Repo";
+} 
+else 
+{
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
-
-if ($currdir == "../root System/jtsmit11") 
+if ($currdir == "../root System") 
     $label = "Root";
-else {
+else 
+{
     $path = explode('/', $currdir);
     $label = $path[count($path)-1]; 
 }
-
 ?>
 
 <!doctype html>
@@ -41,16 +48,68 @@ else {
     <head>
         <meta charset="UTF-8">
         <link rel="shortcut icon" href="./.favicon.ico">
-        <title><?= $label ?></title>
-
-        <link rel="stylesheet" href="./.style.css">
-        <script src="./.sorttable.js"></script>
+        <title>Group M Project Managament</title>
+        <link rel="stylesheet" type="text/css" href="template_profile.css">
+        <link rel="stylesheet" href="./style_profile.css">
+        <script src="./sorttable.js"></script>
     </head>
-
     <body>
-        <div id="container">
-            <h1><?= $label ?></h1>
 
+   <div class="container1">
+        <div class="hboxed"><h1>Group M Project Managment</h1></div>
+      <div class="hboxed2"> </div>
+      <div class="navbar">
+            <ul>
+           <div class="bar"><a href="index_main.php">Home</a></div> 
+                <div class="bar"><a href="#">Directory</a></div>
+                <div class="bar"><a href="#">How to</a></div> 
+                <div class="bar"><a href="settings.php">Settings</a></div> 
+                <div class="bar"><a href="index_profile.php">Profile</a></div>
+                <div class="bar"><a href="logout.php">Log Out</a></div> 
+            </ul>
+            
+        </div>
+      <img class="user_pic" src="..\users\<?=$uname?>\.set\default.png">
+      <div class="Header"><?=$fname?></div>
+      <div class="education"> 
+
+    <h1><u>EDUCATION</u></h1>
+    <h4>Bachelor of Science in Applied Computer Science
+    <br>Arizona State University Polytechnic, Mesa, Arizona
+    <br>Expected Graduation Date: May 2015</h4>
+  
+    <h3>Certificate in Cisco Networking</h3>
+ 
+    <ul>
+    <li>Cisco Certified Entry Networking Technician</li>
+    <li>Cisco Certified Network Associate</li>
+    <li>Cisco Certified Network Associate Security</li>
+    <li>Cisco Certified Network Associate Voice</li>
+    <li>Cisco Certified Network Professional</li>
+    </ul>
+
+    <h4>Expected Graduation Date: June 2014</h4>
+    </div>
+    <div class="work">
+      <h1><u>PROFESSIONAL EXPERIENCE</u></h1>
+      <h4>Support Technician, Arizona State University, Mesa, Arizona                     <br>September 2010 - Present</h4>
+        <ul><li> Assisted faculty and teachers in technical troubleshooting on a daily basis.</li>
+        <li>Set up video conferences and prepped classrooms for classes and special events.</li>
+        <li>Imaged both Macintosh and Windows Operating Systems and installed software.</li>
+      </ul>
+      <h4>Customer Service/Data Entry, Kevin Smith State Farm, Goodyear, Arizona              <br>May 2004 - Present</h4>
+        <ul><li>Reconciled and balanced the business’s accounting programs.</li>
+        <li>Assisted in assorted marketing programs and booth events to gain new clients.</li>
+      </ul>
+      <h4>Sales/ Cashier, Radio Shack, Mesa, Arizona                                <br>February 2010 - September 2010</h4>
+        <ul><li>Managed the store while it was between management.</li>
+        <li>Used various selling techniques to meet monthly quotas.</li>
+        <li>Provided knowledge and support to customers on a daily basis.</li>
+        <ul>
+    </div>
+     <div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 1st, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
+       <div class="bboxed2"> </div>
+        <div id="container">
             <table class="sortable">
                 <thead>
                     <tr>
@@ -62,12 +121,12 @@ else {
                 </thead>
                 <tbody>
 <?php
-
 // Opens directory
 $myDirectory = opendir($currdir);
 
 // Gets each entry
-while ($entryName = readdir($myDirectory)) {
+while ($entryName = readdir($myDirectory)) 
+{
     $dirArray[] = $entryName;
 }
 
@@ -79,10 +138,9 @@ $indexCount = count($dirArray);
 
 // Sorts files
 //sort($dirArray);
-
 // Loops through the array of files
-for ($index = 0; $index < $indexCount; $index++) {
-
+for ($index = 0; $index < $indexCount; $index++) 
+{
     // Decides if hidden files should be displayed, based on query above.
     if (substr("$dirArray[$index]", 0, 1) != $hide || ($currdir != '.' && $dirArray[$index] == "..")) {
 
@@ -93,7 +151,7 @@ for ($index = 0; $index < $indexCount; $index++) {
         // Gets File Names
         $name = $dirArray[$index];
         $namehref = ($currdir == "." ? "" : $currdir . '/') . $dirArray[$index];
-	$fullname = $currdir . '/' . $dirArray[$index];
+    $fullname = $currdir . '/' . $dirArray[$index];
 
         // Gets Date Modified
         $modtime = date("M j Y g:i A", filemtime($fullname));
@@ -206,12 +264,12 @@ for ($index = 0; $index < $indexCount; $index++) {
 
         // Output
         echo("
-		<tr class='$class'>
-			<td><a href='$namehref'$favicon class='name'>$name</a></td>
-			<td><a href='$namehref'>$extn</a></td>
-			<td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
-			<td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>
-		</tr>");
+        <tr class='$class'>
+            <td><a href='$namehref'$favicon class='name'>$name</a></td>
+            <td><a href='$namehref'>$extn</a></td>
+            <td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
+            <td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>
+        </tr>");
     }
 }
 ?>
@@ -221,13 +279,5 @@ for ($index = 0; $index < $indexCount; $index++) {
 
         <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
         </div>
-        
-  	<form action="upload_file.php" method="post"
-		enctype="multipart/form-data">
-		<label for="file">Filename:</label>
-		<input type="file" name="file" id="file"><br>
-		<input type="submit" name="submit" value="Submit">
-	</form>
-    
     </body>
 </html>
