@@ -1,5 +1,8 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
+=======
 <title>This is the main hub page</title>
+>>>>>>> f86fabf64706d439fe1d46981ce24b39bae646d1
 <html>
 	<head>
 
@@ -12,15 +15,26 @@
 		if(isset($_POST['dirname'])) {					
 			$dirname = $_POST['dirname'];
 			}
+<<<<<<< HEAD
+			
+=======
 
+>>>>>>> f86fabf64706d439fe1d46981ce24b39bae646d1
 		$user = $_SESSION['email'];
 		$dirname = "homework_stuff";						
 		$dir = new FileAccess();							
 		//$dir->createDir($dirname, $user);
+<<<<<<< HEAD
+		
+		
+		
+		
+=======
 
 
 
 
+>>>>>>> f86fabf64706d439fe1d46981ce24b39bae646d1
 		//mkdir("/wamp/www/cst316/users/$user/", 0777); ///put this in registration.php
 	?>
 
@@ -76,4 +90,8 @@
 		<div class="bboxed"><center><font size="2">CST 316 Group M Project Management Assignment<br>Last Updated: March 25th, 2014<br>Product Owner: Dr. Kevin Gary</font></center></div>
 		<div class="bboxed2"> </div>	
 	</body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> f86fabf64706d439fe1d46981ce24b39bae646d1
