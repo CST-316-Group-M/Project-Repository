@@ -5,12 +5,17 @@ Last Revise: 3/23/14
 
 This is the main template of all the pages on the web page.
 Any time a webpage is created the webpage should imediatly link to this CSS File.*/
-		html, body 
+		
+
+/*This is the section that defines the overall page settings like page width and height.*/
+        html, body 
 		{
 			width: relative;
 			height: relative;
 			background-color: white;
 		}
+
+/*.hboxed is the first header box at the top of the page*/
         .hboxed 
         {
             position:absolute;
@@ -18,6 +23,7 @@ Any time a webpage is created the webpage should imediatly link to this CSS File
             height: 60px;
             background-color: #A4A4A4;
         }
+/*Same as .hboxed; .hboxed2 is the smaller box that gives the header a more defined look.*/
         .hboxed2 
         {
             position:absolute;
@@ -26,22 +32,7 @@ Any time a webpage is created the webpage should imediatly link to this CSS File
             background-color: #2E2EFE;
 			top: 60px;
         }
-		.bboxed 
-        {
-            position:absolute;
-            width: 100%;
-            height: 100px;
-            background-color: #A4A4A4;
-			bottom: 0%;
-        }
-        .bboxed2 
-        {
-            position:absolute;
-            width:100%;
-            height: 2px;
-            background-color: #2E2EFE;
-			bottom: 100px;
-        }
+
         .navbar
         {
             position:absolute;
