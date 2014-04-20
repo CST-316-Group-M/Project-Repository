@@ -11,10 +11,16 @@ session_start();
 //session variables
 $uname = $_SESSION['email'];
 
-if (isset($_POST['$newdir'])) {
-	$nd = $_POST['$newdir'];
-	$_SESSION['newdir'] = $nd;
-	}
+
+
+/////////////////////// for creating new dir form at bottom of page/////////
+$_SESSION['newdir'] = $newdir;
+//if (isset($_POST['$newdir'])) {
+	$newdir = $_POST['$newdir'];
+	
+//}
+
+
 
 // Adds pretty filesizes
 function pretty_filesize($file) 
@@ -268,14 +274,13 @@ for ($index = 0; $index < $indexCount; $index++)
         <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
 
     </body>
-<form action="upload_file.php" method="post"
+<form id="uploadfile" action="upload_file.php" method="post"
 		enctype="multipart/form-data">
         <label for="file">Filename:</label>
         <input type="file" name="file" id="file"><br>
         <input type="submit" name="submit" value="Submit"></form>
 
-<form action="dir_ops.php" method="post"
-		enctype="multipart/form-data">
-        <input type="text" name="newdir" id="newdir"><br>
+<form id="newdir" action="dir_ops.php" method="post">
+        <input type="text" name="newdir"><br>
         <input type="submit" name="submit" value="New Folder"></form>
 </html>
