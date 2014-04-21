@@ -9,11 +9,15 @@ Description: functions to create and delete folders/files
 <?php
 	session_start();
 	$current = $_SESSION['currentdir'];
+	$newdir = $_POST['$newdir'];
+	$_SESSION['newdir'] = $newdir;
 	$newdirname = $_SESSION['newdir'];
+	
+	
 	
 	echo "name of current dir: " . $current;
 	echo "<br/>";
-	echo "name of new dir: " . $newdirname;
+	echo "name of new dir: " . $newdir;
 	echo "<br/>";
 	if (!isset($_SESSION['newdir'])) {
 		echo "newdir session variable not set.";
@@ -40,7 +44,7 @@ Description: functions to create and delete folders/files
 	
 	/*
 	function deleteDir($d) {		//might have problems if path is missing /
-		if($is_dir($d)) {			// isolate last portion of path to remove
+		if(is_dir($d)) {			// isolate last portion of path to remove
 			rmdir($d)				// explode - find last element of array - that will be the dir
 		}
 		else {
@@ -49,9 +53,13 @@ Description: functions to create and delete folders/files
 	}
 	*/
 	
+
 	/*
+	//php offers unlink - unlinks filename but does not delete contents of file
 	function deleteFile($f) {
+		if(is_file($f) {
 		
+		}
 	}
 	*/
 	

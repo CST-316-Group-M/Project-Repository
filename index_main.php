@@ -5,20 +5,14 @@ Please review the readme document in the main folder for more information about 
 Author: Chris Coyer
 Co-authors: Jordan Smith
 Last Updated: 4/3/14
+	KNOWN ISSUES: 
+		- POST VARIABLE FOR CREATING NEW FOLDER IS NOT SETTING
+		
 */ 
 session_start();
 //require_once "dir_ops.php";
 //session variables
 $uname = $_SESSION['email'];
-
-
-
-/////////////////////// for creating new dir form at bottom of page/////////
-$_SESSION['newdir'] = $newdir;
-//if (isset($_POST['$newdir'])) {
-	$newdir = $_POST['$newdir'];
-	
-//}
 
 
 
@@ -273,14 +267,19 @@ for ($index = 0; $index < $indexCount; $index++)
 
         <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
 
-    </body>
+  
 <form id="uploadfile" action="upload_file.php" method="post"
 		enctype="multipart/form-data">
         <label for="file">Filename:</label>
         <input type="file" name="file" id="file"><br>
         <input type="submit" name="submit" value="Submit"></form>
 
-<form id="newdir" action="dir_ops.php" method="post">
-        <input type="text" name="newdir"><br>
-        <input type="submit" name="submit" value="New Folder"></form>
+<form action="dir_ops.php" method="post">
+<input type="text" name="newdir"><br>
+<input type="submit" name="submit1" value="New Folder"></form>
+
+<form action="addgroup.php" method="post">
+<input type="submit" name="submit2" value="Add Collaborators"></form>
+	
+	</body>
 </html>
