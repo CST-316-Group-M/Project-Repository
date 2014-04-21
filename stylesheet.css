@@ -1,20 +1,20 @@
+/*Allows changes to everything within the html tag*/
 html
 {
+/*Changes the background color to black*/
 background-color:black;
 }
-
+/*Allows changes to unordered lists (ul)*/
 ul
 {
-text-decoration:none;
+/*Changes the text to blue*/
 color:blue;
+/*Changes the text font size to 20 pixel(px)*/
 font-size:20px;
 }
-li
-{
-text-decoration:none;
-}
-
+/*Allows changes to the h1 tag*/
 h1
 {
+	/*Changes the header to red*/
 	color:red;
 }
