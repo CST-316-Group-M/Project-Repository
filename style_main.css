@@ -3,9 +3,12 @@ Please review the readme document in the main folder for more information about 
 
 Author: Chris Coyer
 Co-authors: Jordan Smith
-Last Updated: 4/3/14
-*/	
+Last Updated: 4/20/14
 
+Since this is a modified version of the original file i will be comenting on the changes that i made.
+*/	
+/* The astric in this file is the css properties for the entire page, this defines the margins and the padding 
+of the page that is linked to it.*/
 * {
 	padding:0px;
 	margin:0px;
@@ -15,6 +18,7 @@ h2 {
 	text-align: center;
 	padding: 0 0 12px 0; 
 }
+/*.username is a class in the page that allows for the css file to define the properties of the users user name*/
 .username
 	{
 		position:absolute;
@@ -22,7 +26,8 @@ h2 {
 		left:151px;
 	}
 
-
+/*This is the contatiner that holds everything together in the repository viewer. the changeds that i made to this
+property was that i changed the size of the container so that  */
 #container {
 	box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
 	position: absolute;

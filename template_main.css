@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*
 Author: Jordan Smith
-Last Revise: 3/23/14
+Last Revise: 4/20/14
 
 This is the main template of all the pages on the web page.
 Any time a webpage is created the webpage should imediatly link to this CSS File.*/
@@ -32,7 +32,7 @@ Any time a webpage is created the webpage should imediatly link to this CSS File
             background-color: #2E2EFE;
 			top: 60px;
         }
-
+/*.navbar is the css for the navigation bar on index_main. */
         .navbar
         {
             position:absolute;
@@ -43,6 +43,8 @@ Any time a webpage is created the webpage should imediatly link to this CSS File
             left: 0px;
             text-align: center;
         }
+/* .bar is the seperate bars inside of the navigation bar. this is what gives the 
+navigation bar some character.*/
         .bar
         {
             font-family:"Arial Black"; 

@@ -3,8 +3,10 @@ Please review the readme document in the main folder for more information about 
 
 Author: Chris Coyer
 Co-authors: Jordan Smith
-Last Updated: 4/3/14
+Last Updated: 4/20/14
 */	
+
+/* img.user_pic is the class that shows the users profile picture and all of the formatting properties.*/
 img.user_pic
 {
 	position:absolute;
@@ -16,6 +18,7 @@ img.user_pic
 	box-shadow: 15px 15px 10px -5px rgba(0,0,0,0.5);
 }
 
+/*.header is the orange banner on the profile page that is diplaying the user name to everyone that views the page. */
 .Header
 {
 	position: absolute;
@@ -29,7 +32,7 @@ img.user_pic
 	-webkit-border-bottom-right-radius: 30px 30px;
 	box-shadow: 10px 10px 10px -5px rgba(0,0,0,0.5);
 }
-
+/* This is the CSS Properties of the education portion of the profile page that shows the users educational history.*/
 .education
 {
 	position:absolute;
@@ -42,6 +45,8 @@ img.user_pic
 	border-color: grey;
 	padding-left: 25px;
 }
+
+/*Same as the education class the .work class shows the work experience of the user.*/
 .work
 {
 	position:absolute;
@@ -55,13 +60,13 @@ img.user_pic
 	padding-left: 25px;
 }
 
-
 h2 {
 	font-size: 16px;
 	text-align: center;
 	padding: 0 0 12px 0; 
 }
-
+/*This is the contatiner that holds everything together in the repository viewer. the changeds that i made to this
+property was that i changed the size of the container so that  */
 #container {
 	box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
 	position: absolute;
