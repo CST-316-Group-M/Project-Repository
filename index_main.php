@@ -3,12 +3,18 @@
 Please review the readme document in the main folder for more information about the permission to use his code.
 
 Author: Chris Coyer
-Co-authors: Jordan Smith
+Co-authors: Jordan Smith, Jason, Lauren, Jacob
 Last Updated: 4/3/14
 */ 
 session_start();
-$uname = $_SESSION['user'];
-$fname = $_SESSION['name'];
+//require_once "dir_ops.php";
+//session variables
+$uname = $_SESSION['email'];
+
+//check to see if a new folder has been called.
+if (isset($_POST['submit1'])) { 
+ $_SESSION['newdir'] = $_POST['newdir'];
+	header('Location: dir_ops.php');}
 
 // Adds pretty filesizes
 function pretty_filesize($file) 
@@ -31,6 +37,8 @@ if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr
 {
     $currdir = "./users/$uname";
 	$_SESSION['upload'] = $currdir;
+	$_SESSION['currentdir'] = $currdir;
+	
 } 
 else 
 {
@@ -60,7 +68,7 @@ else
     <body>
 		
         <div class="container1">
-        <div class="username"><h1><?=$fname?></h1></div>
+        <div class="username"><h1><?=$uname?></h1></div>
         <div class="hboxed"><h1>Group M Project Management</h1></div>
         <div class="messenger"><center><h3>Messenger Client</h3></center></div>
         <div class="hboxed2"> </div>
@@ -260,10 +268,21 @@ for ($index = 0; $index < $indexCount; $index++)
 
         <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
 
-    </body>
-<form action="upload_file.php" method="post"
+  
+<form id="uploadfile" action="upload_file.php" method="post"
 		enctype="multipart/form-data">
         <label for="file">Filename:</label>
         <input type="file" name="file" id="file"><br>
         <input type="submit" name="submit" value="Submit"></form>
+
+<form action="index_main.php" method="post">
+<input type="text" name="newdir"><br>
+<input type="submit" name="submit1" value="New Folder"></form>
+
+
+
+<form action="addgroup.php" method="post">
+<input type="submit" name="submit2" value="Add Collaborators!"></form>
+	
+	</body>
 </html>
