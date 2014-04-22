@@ -1,5 +1,19 @@
+<title> Group Management </title>
 <?php
+/*
+Title:
+Author:
+Contributors:
+Last quality check:
+Description:
+
+
+
+*/
 session_start();
+//if($_SESSION['check'] = 1) {
+//	echo "Your username or password was incorrect.";
+//	}
 
 if(isset($_SESSION['email']))
 {
@@ -11,14 +25,21 @@ if(isset($_POST['email']) && isset($_POST['password']))
 	$email = $_POST['email'];
 	$pass = sha1($_POST['password']);
 	
-	$db = connect('root', "CST316groupm");
+	$db = connect("webauth", "webauth");
 	$eval = validate($db, $email, $pass);
 	
 	if($eval != false)
-	{
+	{	
+	//	$_SESSION['check'] = 0;
 		echo "Welcome ".$eval;
 		$_SESSION['email']=$eval;
+
 		header("location: index_main.php");
+	}
+	else{
+	//	$_SESSION['check'] = 1;
+		header("location: login.php");
+		
 	}
 }
 
@@ -39,7 +60,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
 	function validate($db, $email, $pass)
 	{
 		$myemail = false; 
-		$query = "SELECT email, password FROM users where email = '".$email."' AND password = '".$pass."'";
+		$query = "SELECT fname, email, password FROM users where email = '".$email."' AND password = '".$pass."'";
+		$queryn = "SELECT fname FROM users where email = '".$email."'";
 		try
 		{
 			$db->beginTransaction();
@@ -48,9 +70,10 @@ if(isset($_POST['email']) && isset($_POST['password']))
 			foreach($result as $row)
 			{
 				$myemail = $row['email'];
+				$fname = $row['fname'];
 				
 			}
-			
+			$_SESSION['fname'] = $fname;
 			$db->commit();
 			return $myemail;
 		}
@@ -109,9 +132,9 @@ if(isset($_POST['email']) && isset($_POST['password']))
 					<td align="right">
 					<p><b>Password:</b></p></td>
 					<td>&nbsp;<input name="password" type="password" id="password"></td>
-					<td></td>
-				</tr>
-				<tr>
+					
+				
+				
 					<td></td>
 					<td align="center">
 					<input type="submit" name="Submit" value="Login">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></form>
@@ -119,6 +142,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
 				</tr>
 				</form>
 				<tr>
+
+				
 					<td></td>
 					<td align="left">&nbsp;&nbsp;&nbsp;<a href="#forgotpass">Forgot your password?</a></td>
 					<td></td>

@@ -1,5 +1,5 @@
 <?php
-	session_start();		// this session is carrying over from login.php, session id may need to be regenerated
+	session_start();		// this session is carrying over from login.php
 	
 	/**
 	Making this a class file for security purposes.

@@ -4,15 +4,14 @@ Is it working?
 
 <?php
 // Create connection
+session_start();
+$email = $_SESSION['email'];
 $con=mysqli_connect("localhost","webauth","webauth","CST316");
-$name='jason';
 // Check connection
 if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-$email = 'jscribne@asu.edu';
-
 $result = mysqli_query ($con, "SELECT groupn FROM users WHERE email = '".$email."'");
 if (!$result) {
 	echo 'Could not run query:'.mysqli_error();

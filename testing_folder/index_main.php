@@ -3,21 +3,12 @@
 Please review the readme document in the main folder for more information about the permission to use his code.
 
 Author: Chris Coyer
-Co-authors: Jordan Smith, Jason, Lauren, Jacob
+Co-authors: Jordan Smith
 Last Updated: 4/3/14
 */ 
 session_start();
-//require_once "dir_ops.php";
-//session variables
-$uname = $_SESSION['email'];
-$fname = $_SESSION['fname'];
-$arr = explode("@", $uname);			//php explode function splits strings
-$uname= $arr[0];	
-
-//check to see if a new folder has been called.
-if (isset($_POST['submit1'])) { 
- $_SESSION['newdir'] = $_POST['newdir'];
-	header('Location: dir_ops.php');}
+$uname = $_SESSION['user'];
+$fname = $_SESSION['name'];
 
 // Adds pretty filesizes
 function pretty_filesize($file) 
@@ -40,8 +31,6 @@ if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr
 {
     $currdir = "./users/$uname";
 	$_SESSION['upload'] = $currdir;
-	$_SESSION['currentdir'] = $currdir;
-	
 } 
 else 
 {
@@ -72,24 +61,28 @@ else
 		
         <div class="container1">
         <div class="username"><h1><?=$fname?></h1></div>
-	<div class="sboxed"></div>
         <div class="hboxed"><h1>Group M Project Management</h1></div>
         <div class="messenger"><center><h3>Messenger Client</h3></center></div>
         <div class="hboxed2"> </div>
         <div class="navbar">
             <ul>
-		<div class="barcontainer">
                 <div class="bar"><a href="index_main.php">Home</a></div> 
                 <div class="bar"><a href="#">Directory</a></div>
                 <div class="bar"><a href="#">How to</a></div> 
                 <div class="bar"><a href="settings.php">Settings</a></div> 
                 <div class="bar"><a href="index_profile.php">Profile</a></div>
                 <div class="bar"><a href="logout.php">Log Out</a></div>
-		</div>
+
             </ul>
 		
+            
         </div>
-	<img class="user_pic" src="..\users\<?=$uname?>\.set\<?=$uname?>.png">
+    
+
+        <div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 30th, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
+        <div class="bboxed2"> 
+    </div>
+
         <div id="container">
             <table class="sortable">
                 <thead>
@@ -157,7 +150,7 @@ for ($index = 0; $index < $indexCount; $index++)
             }
 
             // Cleans up . and .. directories
-           /*if ($name == ".") {
+            /*if ($name == ".") {
                 $name = ". (Current Directory)";
                 $extn = "&lt;System Dir&gt;";
                 $favicon = " style='background-image:url($namehref/.favicon.ico);'";
@@ -165,7 +158,7 @@ for ($index = 0; $index < $indexCount; $index++)
             if ($name == "..") {
                 $name = ".. (Previous Folder)";
                 $extn = "&lt;System Dir&gt;";
-            }*/
+            }
             if ($currdir == "." && $dirArray[$index] == "..")
                 $namehref = "";
             elseif ($dirArray[$index] == "..") {
@@ -175,7 +168,7 @@ for ($index = 0; $index < $indexCount; $index++)
                 $namehref = '?' . $prevdir;
             }
             else
-                $namehref = '?' . $namehref;
+                $namehref = '?' . $namehref; */
         }
         
 
@@ -249,6 +242,8 @@ for ($index = 0; $index < $indexCount; $index++)
         }
     
       // Output
+	  //Leave next line out until we can fix. -Jason
+	  // 
 	  echo("<tr class='$class'>
             <td><a href='$namehref'$favicon class='name'>$name</a></td>
             <td><a href='$namehref'>$extn</a></td>
@@ -265,24 +260,10 @@ for ($index = 0; $index < $indexCount; $index++)
 
         <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
 
-<div class="upload_file">
-<form id="uploadfile" action="upload_file.php" method="post"
-        enctype="multipart/form-data">
-        <label for="file">Filename:</label>
-        <input type="file" name="file" id="file">
-        <input type="submit" name="submit" value="Submit"></form>
-</div>
-
-<div class="new_dir">
-<form action="index_main.php" method="post">
-<input type="text" name="newdir">
-<input type="submit" name="submit1" value="New Folder"></form>
-</div>
-
-<div class="colab">
-<form action="addgroup.php" method="post">
-<input type="submit" name="submit2" value="Add Collaborators!"></form>
-</div>
-</div>   
     </body>
+<form action="upload_file.php" method="post"
+		enctype="multipart/form-data">
+        <label for="file">Filename:</label>
+        <input type="file" name="file" id="file"><br>
+        <input type="submit" name="submit" value="Submit"></form>
 </html>

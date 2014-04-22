@@ -24,7 +24,7 @@ mail($to,$subject,$message,$headers);
 		<h1>Done!</h1>
 	<body>
 	<p>Good to go! Click here to return to the main page:</p>
-	<a href="/Mainhub_Dir/.index.php" class="button">OK!</a>
+	<a href="/index_main.php" class="button">OK!</a>
 	</body>
 </html>
 

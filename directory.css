@@ -1,0 +1,15 @@
+
+/*Allows changes to unordered lists (ul)*/
+ul
+{
+/*Changes the text to blue*/
+color:blue;
+/*Changes the text font size to 20 pixel(px)*/
+font-size:20px;
+}
+/*Allows changes to the h1 tag*/
+h1
+{
+	/*Changes the header to red*/
+	color:red;
+}

@@ -19,6 +19,7 @@ Any time a webpage is created the webpage should imediatly link to this CSS File
         .hboxed 
         {
             position:absolute;
+            left:0px;
             width:100%;
             height: 60px;
             background-color: #A4A4A4;
@@ -32,19 +33,44 @@ Any time a webpage is created the webpage should imediatly link to this CSS File
             background-color: #2E2EFE;
 			top: 60px;
         }
+        .sboxed 
+        {
+            position:absolute;
+            width: 2px;
+            height: 100%;
+            background-color: #2E2EFE;
+            left: 300px;
+        }
 /*.navbar is the css for the navigation bar on index_main. */
         .navbar
         {
+            background-color: #A4A4A4;
             position:absolute;
-            background-color: #9c9b9b;
-            width: 200px;
-            height: auto;
-            top: 135px;
+            width: 300px;
+            height: 93.5%;
+            top: 62px;
             left: 0px;
             text-align: center;
         }
+
+ img.user_pic
+    {
+        position:absolute;
+        width: 250px;
+        height: auto;
+        left: 20px;
+        top: 80px;
+        border: 5px solid black;
+        box-shadow: 15px 15px 10px -5px rgba(0,0,0,0.5);
+    }
 /* .bar is the seperate bars inside of the navigation bar. this is what gives the 
 navigation bar some character.*/
+.barcontainer
+{
+    position:absolute;
+    top:300px;
+    width: 300px;
+}
         .bar
         {
             font-family:"Arial Black"; 

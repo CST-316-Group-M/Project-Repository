@@ -18,12 +18,31 @@ h2 {
 	text-align: center;
 	padding: 0 0 12px 0; 
 }
+.colab
+{
+	position: absolute;
+	bottom:2px;
+	left: 400px;
+}
+
+.upload_file
+{
+	position:abosolute;
+	bottom:2px;
+	left: 0px;
+}
+.new_dir
+{
+	position: absolute;
+	bottom:2px;
+	right:0px;
+}
 /*.username is a class in the page that allows for the css file to define the properties of the users user name*/
 .username
 	{
 		position:absolute;
 		top:65px;
-		left:151px;
+		left:325px;
 	}
 
 /*This is the contatiner that holds everything together in the repository viewer. the changeds that i made to this
@@ -32,9 +51,10 @@ property was that i changed the size of the container so that  */
 	box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
 	position: absolute;
 	top: 120px;
-	left: 225px;
+	left: 325px;
 	font: 14px Sans-Serif;
 	width: 900px;
+	padding-bottom: 2px;
 }
 
 table {

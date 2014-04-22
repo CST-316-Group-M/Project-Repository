@@ -2,3 +2,9 @@
 Author: Jordan Smith
 Last Revise: 3/23/14
 */
+.passwd
+{
+	position: absolute;
+	top:500px;
+	left:500px;
+}
