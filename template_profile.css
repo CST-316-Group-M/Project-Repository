@@ -1,0 +1,58 @@
+@charset "utf-8";
+/*
+Author: Jordan Smith
+Last Revise: 4/20/14
+
+This is the main template of all the pages on the web page.
+Any time a webpage is created the webpage should imediatly link to this CSS File.*/
+		html, body 
+		{
+			width: 100%;
+			height: 100%;
+			background-color: white;
+            margin: 0px;
+            padding: 0px;
+		}
+/*.hboxed is the first header box at the top of the page*/
+        .hboxed 
+        {
+            position:absolute;
+            width:100%;
+            height: 60px;
+            background-color: #A4A4A4;
+        }
+/*Same as .hboxed; .hboxed2 is the smaller box that gives the header a more defined look.*/
+        .hboxed2 
+        {
+            position:absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #2E2EFE;
+			top: 60px;
+        }
+/*.navbar is the css for the navigation bar on index_profile */
+        .navbar
+        {
+            position:absolute;
+            width: 400px;
+            height: auto;
+            top: 460px;
+            left: 10px;
+            text-align: center;
+
+        }
+/* .bar is the seperate bars inside of the navigation bar. this is what gives the 
+navigation bar some character.*/
+        .bar
+        {
+            font-family:"Arial Black"; 
+            border-style: outset;
+            position: relative;
+            border-color: #606060;
+            background-color: #8b8b8b;
+        }
+                .bar:hover
+        {
+            border-style: inset;
+            background-color: #313131;
+        }
