@@ -26,15 +26,17 @@ group IDs
 			}
 	
 	///////////////////////////////////// Getting Ready For Form Input /////////////////////////
-	if(!isset($_POST['group'])) {
+	if((!isset($_POST['group'])) && (!isset($_POST['dir']))) {
 		echo "";
 		
 	//this form will need to be moved to .index.php once on server
 	?>
 	<h4> Ready To Collaborate? </h4>
 	<p>Enter the email of the collaborator you wish to add:</p>
+	<p>Enter the new group folder:</p>
 	<form action="addgroup.php" method="post">
 	<input name="group" type="text" id="group">
+	<input name="dir" type="text" id="dir">
 	<input type="submit" name="Submit" value="Add Group Member">
 	</form>
 	
@@ -42,6 +44,8 @@ group IDs
 	}
 	
 	else {
+		
+		
 		/////////////////////////////////////////// Get Owner ID //////////////////////////////////////////////////
 		//echo "look at this quality debugging.";		
 		//echo $owner_email;	
@@ -59,6 +63,7 @@ group IDs
 		}
 		else {
 			$ownerID = $row1[0];
+			$_SESSION['ID'] = $ownerID;
 			//echo "Owner ID: " . $ownerID;
 		}
 		
@@ -92,20 +97,13 @@ group IDs
 				}
 		
 			else {
+				$ndir = $_POST['dir'];
 				echo $f . " " . $l . " has been added as a collaborator!";
-				/*
-				if(!isset($_POST['group'])) {					
-					echo "";				
-				}					
-				?>
-			<form action="addgroup.php" method="post">
-			<input type="text" name="groupdir"><br>
-			<input type="submit" name="submi1" value="Group Folder">			
-			</form>
-				<?php
-				else {
-				$groupdir = $_POST['groupdir'];
-				}	*/
+				$makedir = mkdir("/var/www/groups/1/$ndir/", 0777);	
+				if(!$makedir) {
+					echo "Error creating directory.";
+				}
+				
 			}
 		} 
 	}	

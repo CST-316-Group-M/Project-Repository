@@ -1,6 +1,6 @@
 <!--
 Original Author: Lauren Krugen
-Contributors:
+Contributors: Jason
 Description: functions to create and delete folders/files
 -->
 
@@ -9,10 +9,8 @@ Description: functions to create and delete folders/files
 <?php
 	session_start();
 	$current = $_SESSION['currentdir'];
-	$newdir = $_POST['$newdir'];
-	$_SESSION['newdir'] = $newdir;
-	$newdirname = $_SESSION['newdir'];
-	
+	$newdir = $_SESSION['newdir'];
+	//$newdir = "test";
 	
 	
 	echo "name of current dir: " . $current;
@@ -22,16 +20,19 @@ Description: functions to create and delete folders/files
 	if (!isset($_SESSION['newdir'])) {
 		echo "newdir session variable not set.";
 	}
-	
+	createDir($current, $newdir);
+	$_SESSION['newdir'] = null;
 	function createDir($d, $n) {
-	$new_d = $d . "/" . $n;
-		//if(!exists($new_d)) {
+		echo "I am in the function at least";
+		$new_d = $d . "/" . $n;
+		echo $new_d;
+		if(!file_exists($new_d)) { //!exists is causing issues. could be the verion of PHP we have. file_exists works better for now. - Jason
 			echo $new_d;
 			mkdir($new_d, 0777);	//permissions should change
-		//}
-		//else {
-		//	echo "Cannot create; directory with that name already exists.";
-		//}
+		}
+		else {
+			echo "Cannot create; directory with that name already exists.";
+		}
 	}
 	//createDir($current, $newdirname);
 	
@@ -74,5 +75,7 @@ Description: functions to create and delete folders/files
     }
 
 </style>
+	<p>Click here to return to the main page:</p>
+	<a href="/index_main.php" class="button">OK!</a>
 </body>
 </html>

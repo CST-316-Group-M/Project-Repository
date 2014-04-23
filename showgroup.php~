@@ -8,31 +8,36 @@ Description: Displays folders you share with other people AND folders shared wit
 <body>
 <?php
 	session_start();
+	$currdir = "./groups/$GID";
 	$user = $_SESSION['email'];
 	$ID = $_SESSION['ID'];
-	/*	
-	echo "The user is: " . $user;
+	echo "The user is: " . $user . " and their ID is: " . $ID;
 	echo "<br>";
-	echo "Their ID is: " . $ID;
-	echo "<br>";
-	*/
-	//function int getGID($someID) {
+	
+	function getGID($someID) {
 		$con = mysqli_connect("localhost","webauth","webauth");
 		$sel = mysqli_select_db($con, 'CST316');
-		$find = "select groupID from groups where ownerID = '".$ID."' or memberID = '".$ID."'";
+		$find = "select groupID from groups where ownerID = '".$someID."' or memberID = '".$someID."'";
 		$query = mysqli_query($con, $find);
-		$fetch = mysqli_fetch_array($query);	
-			
-				echo "<br>";
-				echo "Group ID: " . $fetch['groupID'];
-				//$GID = $fetch['groupID'];		
-								
-		//}	
-		echo $GID;
+		$fetch = mysqli_fetch_assoc($query); 		//change for multiple groups
+			if(!$fetch){
+				echo "Error number: " . mysqli_errno($con);
+			}
+			else {
+				echo "success";
+				//int $i = 0;
+				//echo $fetch[$i];
+				//$i = $i + 1;
+			}
+		
+		$gID = $fetch[0];
+		$gIDD = $fetch[1];
+		echo "<br>";
+		echo "You current group folders are: " . $gID . ", " . $gIDD;
+		
+	}	
 	
-	
-	
-	
+	getGID($ID);
 	
 	
 	
@@ -40,7 +45,7 @@ Description: Displays folders you share with other people AND folders shared wit
 	
 	
 	///////////////////////////////////Display///////////////////////////////////////////
-	
+	/*
 	function pretty_filesize($file) 
 {
     $size = filesize($file);
@@ -59,14 +64,16 @@ date_default_timezone_set("America/Phoenix");
 $hide = "Test";
 if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) 
 {
-    $currdir = "./groups/$GID";
+    $currdir = "./users/$uname";
+	$_SESSION['upload'] = $currdir;
+	$_SESSION['currentdir'] = $currdir;
 	
 } 
 else 
 {
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
-if ($currdir == "./users/$GID") 
+if ($currdir == "./users/$uname") 
  
     $label = "Root";
 else 
@@ -154,7 +161,7 @@ for ($index = 0; $index < $indexCount; $index++)
                 $name = ".. (Previous Folder)";
                 $extn = "&lt;System Dir&gt;";
             }*/
-			
+			/*
             if ($currdir == "." && $dirArray[$index] == "..")
                 $namehref = "";
             elseif ($dirArray[$index] == "..") {
@@ -247,7 +254,7 @@ for ($index = 0; $index < $indexCount; $index++)
     }
 }
 
-	
+*/	
 ?>	
 	
 	

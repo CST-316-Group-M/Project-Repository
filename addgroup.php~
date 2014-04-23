@@ -42,8 +42,28 @@ group IDs
 	}
 	
 	else {
-		$group = $_POST['group'];
+		/////////////////////////////////////////// Get Owner ID //////////////////////////////////////////////////
+		//echo "look at this quality debugging.";		
+		//echo $owner_email;	
+		$getownerID = "select id from users where email = '".$owner_email."'";
+		$queryID = mysqli_query($con, $getownerID);
+		if(!$queryID) {
+			echo "Error number " . mysqli_errno($con);
+			echo "<br>";
+		}
+
+		$row1 = mysqli_fetch_row($queryID);
+		if(!$row1) {
+			echo "Error number " . mysqli_errno($con);
+			echo "<br>";		
+		}
+		else {
+			$ownerID = $row1[0];
+			//echo "Owner ID: " . $ownerID;
+		}
 		
+		//////////////////////////////////////////// Find Member Information //////////////////////////////////////
+		$group = $_POST['group'];
 		$creategroup = 	"select id, fname, lname from users where email = '".$group."'"; //can return name, etc if needed
 		$query = mysqli_query($con, $creategroup);
 		if(!$query) {
@@ -53,29 +73,42 @@ group IDs
 			
 		$row = mysqli_fetch_row($query);
 		if(!$row) {
-			echo mysqli_errno($con);
+			echo "Could not find user.";
+			echo "Error number: " . mysqli_errno($con);
 			}
-		//////////////////////////////////// Adding Group Member //////////////////////////////////////////
 		
+		//////////////////////////////////////////// Adding Group Member //////////////////////////////////////////
 		else {
 			//echo "ID returned: " . $row[0];
 			//echo "<br>";
 			$member_id = $row[0];
 			$f = $row[1];
 			$l = $row[2];
-			$addmember = "insert into groups(groupID, ownerID, memberID) values('".$owner_id."','".$member_id."')";		
+			$addmember = "insert into groups(ownerID, memberID) values('".$ownerID."','".$member_id."')";
 			$query2 = mysqli_query($con, $addmember);
 			if(!$query2) {
 				echo "Error number: " . mysqli_errno($con);
 				echo "<br>";
-			}
+				}
+		
 			else {
 				echo $f . " " . $l . " has been added as a collaborator!";
+				/*
+				if(!isset($_POST['group'])) {					
+					echo "";				
+				}					
+				?>
+			<form action="addgroup.php" method="post">
+			<input type="text" name="groupdir"><br>
+			<input type="submit" name="submi1" value="Group Folder">			
+			</form>
+				<?php
+				else {
+				$groupdir = $_POST['groupdir'];
+				}	*/
 			}
-			
-
-		}
-	}
+		} 
+	}	
 ?>
 <style>
 	body { background-image:url('./img/wallpaper.jpg'); }	
@@ -87,5 +120,7 @@ group IDs
     }
 
 </style>
+<p>Click here to return to the main page:</p>
+<a href="/index_main.php" class="button">OK!</a>
 </body>
 </html>
