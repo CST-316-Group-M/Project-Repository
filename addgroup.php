@@ -3,7 +3,6 @@ Original Author: Lauren
 Contributors:
 Description: queries users into group table for collaboration signified by
 group IDs 
-<<<<<<< HEAD
 ******* ******* ******** TO FIX:
 	- GROUP ID DOES NOT INCREMENT
 	- COLLAB BASED ON PROJECT/FOLDER/????
@@ -18,32 +17,15 @@ group IDs
 	$id = $_SESSION['ID'];
 	
 	///////////////////////////////////// Database Connection and Selection ////////////////
-=======
--->
-<html>
-	<html>
-	<?php
-	if(isset($_POST)) {
-		if(isset($_POST['group'])) {
-			$group = $_POST['group'];
-		}
-	}
-	//connect to database 
->>>>>>> master
 	$con = mysqli_connect("localhost","webauth","webauth");
 		if(!$con) {
 			echo "Could not connect to database.";
 			}
-<<<<<<< HEAD
-=======
-	//select the database 
->>>>>>> master
 	$sel = mysqli_select_db($con, 'CST316');
 		if(!$sel) {
 			echo "Could not select database.";
 			}
 	
-<<<<<<< HEAD
 	///////////////////////////////////// Getting Ready For Form Input /////////////////////////
 	if((!isset($_POST['group'])) && (!isset($_POST['dir']))) {
 		echo "";
@@ -56,18 +38,10 @@ group IDs
 	<form action="addgroup.php" method="post">
 	<input name="group" type="text" id="group">
 	<input name="dir" type="text" id="dir">
-=======
-	//this form will need to be moved to .index.php once on server
-	?>
-	
-	<form>
-	<input name="text" type="group" id="group">
->>>>>>> master
 	<input type="submit" name="Submit" value="Add Group Member">
 	</form>
 	
 	<?php
-<<<<<<< HEAD
 	}
 	
 	else {
@@ -136,7 +110,7 @@ group IDs
 			$f = $row[1];
 			$l = $row[2];
 			$max = $max + 1;
-			echo $max;
+			//echo $max;
 			$addmember = "insert into groups(groupID, ownerID, memberID) values('".$max."', '".$ownerID."','".$member_id."')";
 			$query2 = mysqli_query($con, $addmember);
 			if(!$query2) {
@@ -172,19 +146,3 @@ group IDs
 <a href="/index_main.php" class="button">OK!</a>
 </body>
 </html>
-=======
-	
-	// jason - randomly generated group ID?
-	//$ID = "";
-	$creategroup = 	"select * from users where email = '".$group."'";
-	$query = mysqli_query($con, $creategroup);
-	
-	/*
-	
-	add group ID to user and other info to group table
-	loop until done
-	boom. done. */
-?>
-</body>
-</html>
->>>>>>> master
