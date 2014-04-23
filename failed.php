@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 <?php
+=======
+
+
+
+<?php
+//comments needed!
+>>>>>>> master
 if (isset($_POST['Button'])) {
 	echo "HELLO!";
 	header('Location: /login.php');

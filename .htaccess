@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 DirectoryIndex login.php
 Options -Indexes
+=======
+DirectoryIndex login.php
+>>>>>>> master
