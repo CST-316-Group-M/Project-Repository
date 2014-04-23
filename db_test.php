@@ -8,7 +8,8 @@ Contributing Author(s):
 <?php
 
 
-class db_test extends PHPUnit_Framework_TestCase {
+class db_test extends PHPUnit_Framework_TestCase
+{
 
 
 	private function pretty_filesize($size) 
@@ -53,11 +54,9 @@ class db_test extends PHPUnit_Framework_TestCase {
 		$uname= $arr[0];
 		$currdir = "./users/$uname";
 		$this->assertEquals($currdir,'./users/jtsmit9421');
-
+		
 	}
 
 
-
 }
-
 ?>

