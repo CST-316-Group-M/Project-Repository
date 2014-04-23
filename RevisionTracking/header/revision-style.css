@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
   Christopher McDonald, Group M
 
   Credit goes to anonymous tree tutorial
@@ -10,6 +11,30 @@
 */
 
 .level td:first-child { border:1px solid #eee; }
+=======
+
+Original Author: Christopher McDonald
+Contributing Author(s): 
+
+Brief description of file:
+  Style used for the output of the Revision Tracking code.
+
+Date of last update: March 31st, 2014
+List of brief changes:
+1. levels made infinite in the JS.
+2. Added H icon.
+
+*/
+
+/*
+  Stylistic choice. Can be replaced for a different visual format.
+*/
+.level td:first-child { border:1px solid #eee; }
+
+/*
+  Allows operation of the expand/collapse/history buttons, and keeps the tree format correct.
+*/
+>>>>>>> Chris
 .collapse .toggle { background:url("./icon/collapse.gif"); background-repeat:no-repeat; }
 .expand .toggle { background:url("./icon/expand.gif"); background-repeat:no-repeat; }
 .toggle { height:10px; width:9px; display:inline-block; }
@@ -17,6 +42,7 @@
 .history { background:url("./icon/history.png"); background-repeat:no-repeat; height:15px; width:16px; display:inline-block; }
 
 /*
+<<<<<<< HEAD
   Credit goes to Addy Osmani for his webkitdirectory tutorial (albeit very little)
 
   container and row margins shape the page, and can be removed in the real page
@@ -26,6 +52,12 @@
 
 .container { margin:20px }
 .row { margin:10px }
+=======
+  type- styles add the image to each item in the tree.
+  Needs a more complete selection of icons, as it currently only shows common files,
+  and makes the rest blank.
+*/
+>>>>>>> Chris
 span[class*='type-'] { background:url(./icon/blank.png); background-repeat:no-repeat; }
 span[class*='type-folder'] { background:url(./icon/folder.png); background-repeat:no-repeat; }
 span[class*='type-html'] { background:url(./icon/html.png); background-repeat:no-repeat; }
@@ -46,3 +78,12 @@ span[class*='type-md'] { background:url(./icon/doc.png); background-repeat:no-re
 span[class*='type-pdf'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
 span[class*='type-odt'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
 span[class*='type-rtf'] { background:url(./icon/doc.png); background-repeat:no-repeat; }
+<<<<<<< HEAD
+=======
+
+/*
+  Below should be removed when implemented
+*/
+.container { margin:20px }
+.row { margin:10px }
+>>>>>>> Chris

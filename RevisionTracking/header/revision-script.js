@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
   Christopher McDonald, Group M
 
@@ -6,6 +7,28 @@
   Code immediately below is entirely unchanged from where it was borrowed
 */
 
+=======
+﻿/*
+
+Original Author: Christopher McDonald
+Contributing Author(s): 
+
+Brief description of file:
+  Takes a file array, checks for various dependencies such as folders/naming, and outputs a
+  tree and a list in the main html, into 'fileOutput' and 'revisionOutput'.
+
+Date of last update: March 31st, 2014
+List of brief changes:
+1. Levels now added through calculation, not iteration.
+1. Added hidden revisionOutput list which displays when the H icon is clicked.
+
+*/
+
+/*
+  Code immediately below is entirely unchanged from where it was borrowed.
+  Works by gathering all of the children of the folder, and hiding/showing them (collapse/expand).
+*/
+>>>>>>> Chris
 window.onload = $(function() {
     $('#fileOutput').on('click', '.toggle', function () {
         //Gets all <tr>'s  of greater depth
@@ -45,6 +68,7 @@ window.onload = $(function() {
 
 /*
   When a user clicks on the H icon at the end of a file, this executes.
+<<<<<<< HEAD
 
   The first line hides all of the currently shown history data, to make it cleanly update.
 
@@ -53,6 +77,12 @@ window.onload = $(function() {
   The last line searches and shows the history data that matches the id from the H icon.
 */
 
+=======
+  The first line hides all of the currently shown history data, to make it cleanly update.
+  The second and third line acquire the file id.
+  The last line searches and shows the history data that matches the id.
+*/
+>>>>>>> Chris
     $('#fileOutput').on('click', '.history', function () {
         $("[id^='revisionOutput']").children().each(function() {
             $(this).hide();
@@ -66,6 +96,7 @@ window.onload = $(function() {
     });
 
 /*
+<<<<<<< HEAD
   Little stub for testing
 
   Creates file data with the specification of a file system, where FakeRepo is the folder that
@@ -75,6 +106,11 @@ window.onload = $(function() {
   same accessors (name, date, size) so that the code to create the tree can remain unchanged.
 */
 
+=======
+  Little stub for testing.
+  Creates file data with the specification of a file system, where FakeRepo is the repo.
+*/
+>>>>>>> Chris
 	function File(name,date,size) {
 	    this.name = name;
 	    this.date = date;
@@ -96,6 +132,7 @@ window.onload = $(function() {
 	];
 
 /*
+<<<<<<< HEAD
   Credit goes to Addy Osmani for his webkitdirectory tutorial (albeit very little)
 
   Carried over from the previous iteration (which showed files on the local file system) and
@@ -111,6 +148,15 @@ window.onload = $(function() {
   which are inside of them. It builds the id to match the real file based on a naming convention.
 */
 
+=======
+  The top level code filters out files with periods at the start of them, as that indicates
+  items which are used purely for the revision history portion.
+  Real files and folders are put into the tree with their id associated with them. The large
+  nextFile block is to determine whether the folder has items in it or not.
+  The last chunk takes the folders which contain history data, and works with the files
+  which are inside of them. It creates the id to match the real file based on a naming convention.
+*/
+>>>>>>> Chris
   var files,
       len,
       file,
