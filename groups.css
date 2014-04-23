@@ -1,0 +1,13 @@
+.grp
+{
+	font-family: "Arial Black";
+	position: absolute;
+	top: 120px;
+	left:1300px;
+	height: relative;
+	width: 500px;
+	padding:25px;
+	border-style: inset;
+	border-color: #606060;
+	background-color: #8b8b8b;
+}

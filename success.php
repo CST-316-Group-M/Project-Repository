@@ -1,12 +1,16 @@
 <?php
-//comments needed!
-if (isset($_POST['Button'])) {
-	echo "HELLO!";
-	header('Location: /login.php');
-	}
+session_start();
+$email=$_SESSION['email'];
+$to = $email;
+$subject = "Welcome to the group!";
+$message = "You have successfully registered!";
+$from = "service@GroupM.DrGary";
+$headers = "From:" . $from;
+mail($to,$subject,$message,$headers);
 ?>
 <style>
-    /* or put this in your stylesheet */
+	body { background-image:url('./img/wallpaper.jpg'); }	
+		
 
     .button {
         display: inline-block;
@@ -20,7 +24,7 @@ if (isset($_POST['Button'])) {
 		<h1>Done!</h1>
 	<body>
 	<p>Good to go! Click here to return to the main page:</p>
-	<a href="/login.php" class="button">OK!</a>
+	<a href="/index_main.php" class="button">OK!</a>
 	</body>
 </html>
 
