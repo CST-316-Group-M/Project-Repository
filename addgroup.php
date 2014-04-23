@@ -26,15 +26,17 @@ group IDs
 			}
 	
 	///////////////////////////////////// Getting Ready For Form Input /////////////////////////
-	if(!isset($_POST['group'])) {
+	if((!isset($_POST['group'])) && (!isset($_POST['dir']))) {
 		echo "";
 		
 	//this form will need to be moved to .index.php once on server
 	?>
 	<h4> Ready To Collaborate? </h4>
 	<p>Enter the email of the collaborator you wish to add:</p>
+	<p>Enter the new group folder:</p>
 	<form action="addgroup.php" method="post">
 	<input name="group" type="text" id="group">
+	<input name="dir" type="text" id="dir">
 	<input type="submit" name="Submit" value="Add Group Member">
 	</form>
 	
@@ -42,6 +44,8 @@ group IDs
 	}
 	
 	else {
+		
+		
 		/////////////////////////////////////////// Get Owner ID //////////////////////////////////////////////////
 		//echo "look at this quality debugging.";		
 		//echo $owner_email;	
@@ -59,7 +63,31 @@ group IDs
 		}
 		else {
 			$ownerID = $row1[0];
-			echo "Owner ID: " . $ownerID;
+			$_SESSION['ID'] = $ownerID;
+			//echo "Owner ID: " . $ownerID;
+		}
+		
+		//////////////////////////////////////////// Assign a Group ID /////////////////////////////////////
+		$maxGID = "select max(groupID) as max from groups";
+		$querymax = mysqli_query($con, $maxGID);
+		if(!$querymax) {
+			echo "Error number " . mysqli_errno($con);
+			echo "<br>";
+		}
+
+		$row2 = mysqli_fetch_array($querymax);
+		if(!$row2) {
+			echo "Error number " . mysqli_errno($con);
+			echo "<br>";	
+			
+		}
+		else {
+			$max = $row2['max'];
+			//echo "Current Max GID: " . $max;
+			//echo "<br>";
+			$max = $max + 1;
+			echo $max;
+			
 		}
 		
 		//////////////////////////////////////////// Find Member Information //////////////////////////////////////
@@ -84,19 +112,23 @@ group IDs
 			$member_id = $row[0];
 			$f = $row[1];
 			$l = $row[2];
-			$addmember = "insert into groups(groupID, ownerID, memberID) values('2','".$owner_id."','".$member_id."')";
+			$addmember = "insert into groups(groupID, ownerID, memberID) values('".$max."', '".$ownerID."','".$member_id."')";
 			$query2 = mysqli_query($con, $addmember);
 			if(!$query2) {
 				echo "Error number: " . mysqli_errno($con);
 				echo "<br>";
 				}
-			} /*
+		
 			else {
+				$ndir = $_POST['dir'];
 				echo $f . " " . $l . " has been added as a collaborator!";
-				<p>Click here to return to the main page:</p>
-				<a href="/login.php" class="button">OK!</a>
+				$makedir = mkdir("/var/www/groups/$max/$ndir/", 0777);	
+				if(!$makedir) {
+					echo "Error creating directory.";
+				}
+				
 			}
-		} */
+		} 
 	}	
 ?>
 <style>
@@ -109,5 +141,7 @@ group IDs
     }
 
 </style>
+<p>Click here to return to the main page:</p>
+<a href="/index_main.php" class="button">OK!</a>
 </body>
 </html>

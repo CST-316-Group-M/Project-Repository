@@ -10,7 +10,7 @@ a user is in.
 session_start();
 $uname = $_SESSION['email'];
 $uploaddir = $_SESSION['upload'];
-	
+
 function uploadFile ($directory) {
 	$test="/";
 	$filename = $_FILES["file"]["name"];

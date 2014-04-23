@@ -1,4 +1,3 @@
-<html>This should work....</html>
 
 <?php
 $con=mysqli_connect("localhost","webauth","webauth","CST316");
@@ -13,7 +12,7 @@ if(isset($_POST['submit1'])){
 	$password = $_POST['password'];
 	$password = sha1($password);
 	mysqli_query($con, "UPDATE users SET password = '".$password."' WHERE email = '".$email."'");
-		header('Location: success.php');
+		header('Location: resetpass2.php');
 	}
 	else{
 	echo "passwords do not match!";

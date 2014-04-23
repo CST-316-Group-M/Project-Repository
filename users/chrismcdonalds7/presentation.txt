@@ -1,0 +1,22 @@
+Sprint Recap:
+   Fell behind on quality practices, testing, metrics
+   Overestimated amount of work, weren't able to complete most user stories
+
+Release:
+   50%, lacks numerous security features and promised features
+
+Quality Level:
+   Shitty, code not tested extensively (unit testing), smelly, needs refactoring
+   Not efficient or clean or consistent
+
+Strengths:
+   perseverence
+
+Weaknesses:
+   unorganized, communication, work distribution
+
+Thing would do differently:
+   First Sprint
+
+Lessons Learned:
+   ???

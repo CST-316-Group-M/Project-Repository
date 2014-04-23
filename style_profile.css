@@ -75,7 +75,7 @@ property was that i changed the size of the container so that  */
 	font: 14px Sans-Serif;
 	width: 1360px;
 }
-
+/* This is all of the defined formatting for the table on the page along with the formatting for each row.*/
 table {
 	background-color: #F3F3F3;
 	border-collapse: collapse;

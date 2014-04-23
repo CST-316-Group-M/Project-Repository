@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*
 Author: Jordan Smith
-Last Revise: 4/20/14
+Last Revise: 4/22/14
 
 This is the main template of all the pages on the web page.
 Any time a webpage is created the webpage should imediatly link to this CSS File.*/
@@ -33,6 +33,7 @@ Any time a webpage is created the webpage should imediatly link to this CSS File
             background-color: #2E2EFE;
 			top: 60px;
         }
+/*sboxed is the blue bar on the side of the page that adds character to the new look.*/
         .sboxed 
         {
             position:absolute;
@@ -52,7 +53,12 @@ Any time a webpage is created the webpage should imediatly link to this CSS File
             left: 0px;
             text-align: center;
         }
-
+        .bar:hover/*This allows fo the cool feature when you hover over the selection it changes the look of the element.*/
+        {
+            border-style: inset;
+            background-color: #313131;
+        }
+/*img.usr_pic is the CSS Style Function that gives properties to the user image on the page.*/
  img.user_pic
     {
         position:absolute;
@@ -71,7 +77,7 @@ navigation bar some character.*/
     top:300px;
     width: 300px;
 }
-        .bar
+        .bar/* Seperate properties of the navigation container.*/
         {
             font-family:"Arial Black"; 
             border-style: outset;

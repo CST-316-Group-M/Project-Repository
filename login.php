@@ -60,8 +60,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
 	function validate($db, $email, $pass)
 	{
 		$myemail = false; 
-		$query = "SELECT fname, email, password FROM users where email = '".$email."' AND password = '".$pass."'";
-		$queryn = "SELECT fname FROM users where email = '".$email."'";
+		$query = "SELECT fname, email, password, id FROM users where email = '".$email."' AND password = '".$pass."'";
+		$queryn = "SELECT fname, id FROM users where email = '".$email."'";
 		try
 		{
 			$db->beginTransaction();
@@ -71,9 +71,11 @@ if(isset($_POST['email']) && isset($_POST['password']))
 			{
 				$myemail = $row['email'];
 				$fname = $row['fname'];
+				$id = $row['id'];
 				
 			}
 			$_SESSION['fname'] = $fname;
+			$_SESSION['ID'] = $id;
 			$db->commit();
 			return $myemail;
 		}

@@ -7,9 +7,8 @@ Co-authors: Jordan Smith
 Last Updated: 4/3/14
 */  
 session_start();
-$uname = $_SESSION['user'];
-echo uname
-$fname = $_SESSION['name'];
+$uname = $_SESSION['email'];
+$fname = $_SESSION['fname'];
 $arr = explode("@", $uname);			//php explode function splits strings
 $uname= $arr[0];
 // Adds pretty filesizes
@@ -43,7 +42,7 @@ else
 {
     $path = explode('/', $currdir);
     $label = $path[count($path)-1]; 
-}
+} //<?=$fname
 ?>
 
 <!doctype html>
@@ -73,7 +72,7 @@ else
             
         </div>
       <img class="user_pic" src="..\users\<?=$uname?>\.set\default.png">
-      <div class="Header"><?=$fname?></div>
+      <div class="Header">Jason</div>wqdasdasdaw
       <div class="education"> 
 
     <h1><u>EDUCATION</u></h1>

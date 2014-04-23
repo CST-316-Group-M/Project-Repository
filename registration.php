@@ -35,6 +35,7 @@ TODO: Apply functions to all PHP code
 		mkdir("/var/www/users/$user/", 0777); //permissions for rwx
 		mkdir("/var/www/users/$user/.set/", 0777);
 		mkdir("/var/www/users/$user/.old/", 0777);
+		mkdir("/var/www/users/$user/Public Folder", 0777);
 		copy ("/var/www/user_picture/default.png", "/var/www/users/$user/.set/$user.png"); //courtesy of http://findicons.com/ (OpenGL license)
 		}
 	function connect($dbuser,$dbpassword)
@@ -56,6 +57,7 @@ TODO: Apply functions to all PHP code
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
 		$email = $_POST['email'];
+		$_SESSION['email']=$email;
 		$password = sha1($_POST['password']);
 		$con=mysqli_connect("localhost","webauth","webauth","CST316");  //PHP doesn't like using $db for some reason - Jason
 		$query = "SELECT * FROM users WHERE email = '".$email."'";

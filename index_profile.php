@@ -4,13 +4,13 @@ Please review the readme document in the main folder for more information about 
 
 Author: Chris Coyer
 Co-authors: Jordan Smith
-Last Updated: 4/3/14
+Last Updated: 4/22/14
 */  
 
-
+//session_start() creates a session or resumes the current one based on a session identifier passed via a GET or POST request, or passed via a cookie.
 session_start();
 $uname = $_SESSION['email'];
-$fname = $_SESSION['name'];
+$fname = $_SESSION['fname'];
 $arr = explode("@", $uname);			//php explode function splits strings
 $uname= $arr[0];
 
@@ -30,17 +30,17 @@ function pretty_filesize($file)
     }
     return $size;
 }
-date_default_timezone_set("America/Phoenix");
+date_default_timezone_set("America/Phoenix");// Sets the time zone to phoenix, Displays on the repo.
 $hide = "Test";
 if (!isset($_SERVER['QUERY_STRING']) || $_SERVER['QUERY_STRING'] == "" || substr($_SERVER['QUERY_STRING'],0,2) == ".." || strstr($_SERVER['QUERY_STRING'], "..")) 
 {
-    $currdir = "../root System/jtsmit11/Public Repo";
+    $currdir = "./users/$uname/Public Folder/";//Sets the public folder directory
 } 
 else 
 {
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
-if ($currdir == "../root System") 
+if ($currdir == "./users/$uname")  //sets the root directory
     $label = "Root";
 else 
 {
@@ -48,11 +48,12 @@ else
     $label = $path[count($path)-1]; 
 }
 ?>
-
+<!--This begins the HTML Version of the page.-->
 <!doctype html>
 <html>
     <head>
         <meta charset="UTF-8">
+        <!--The HTML Link Tab is what allows us to link various files to the page so we can call on them when they need it.-->
         <link rel="shortcut icon" href="./.favicon.ico">
         <title>Group M Project Managament</title>
         <link rel="stylesheet" type="text/css" href="template_profile.css">
@@ -60,21 +61,22 @@ else
         <script src="./sorttable.js"></script>
     </head>
     <body>
-
+<!--div Class's allow for me to be able to edit multiple elements togethor or speratley.-->
    <div class="container1">
         <div class="hboxed"><h1>Group M Project Managment</h1></div>
       <div class="hboxed2"> </div>
+      <!--navbar class is the container that holds the navigation bar-->
       <div class="navbar">
             <ul>
            <div class="bar"><a href="index_main.php">Home</a></div> 
-                <div class="bar"><a href="#">Directory</a></div>
-                <div class="bar"><a href="#">How to</a></div> 
+                <div class="bar"><a href="directory.php">Directory</a></div>
                 <div class="bar"><a href="settings.php">Settings</a></div> 
                 <div class="bar"><a href="index_profile.php">Profile</a></div>
                 <div class="bar"><a href="logout.php">Log Out</a></div> 
             </ul>
             
         </div>
+        <!--The img class is the class that defines the properties of the user image-->
        <img class="user_pic" src="..\users\<?=$uname?>\.set\<?=$uname?>.png">
       <div class="Header"><?=$fname?></div>
       <div class="education"> 
@@ -115,7 +117,7 @@ else
     </div>
      <div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 1st, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
        <div class="bboxed2"> </div>
-        <div id="container">
+        <div id="container"><!--This is the container that allows me to be able to put multiple functions in the same area as the repo table.-->
             <table class="sortable">
                 <thead>
                     <tr>
@@ -133,7 +135,8 @@ $myDirectory = opendir($currdir);
 // Gets each entry
 while ($entryName = readdir($myDirectory)) 
 {
-    $dirArray[] = $entryName;
+    if($entryName != "." && $entryName !=".." && $entryName !=".old" && $entryName !=".set"){
+        $dirArray[] = $entryName; }
 }
 
 // Closes directory
@@ -178,7 +181,7 @@ for ($index = 0; $index < $indexCount; $index++)
             }
 
             // Cleans up . and .. directories
-            if ($name == ".") {
+            /*if ($name == ".") {
                 $name = ". (Current Directory)";
                 $extn = "&lt;System Dir&gt;";
                 $favicon = " style='background-image:url($namehref/.favicon.ico);'";
@@ -186,7 +189,7 @@ for ($index = 0; $index < $indexCount; $index++)
             if ($name == "..") {
                 $name = ".. (Previous Folder)";
                 $extn = "&lt;System Dir&gt;";
-            }
+            }*/
             if ($currdir == "." && $dirArray[$index] == "..")
                 $namehref = "";
             elseif ($dirArray[$index] == "..") {

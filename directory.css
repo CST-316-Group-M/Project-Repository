@@ -1,15 +1,49 @@
+/*
+Author: Jordan Smith
+Last Revise: 4/22/14
+*/
 
-/*Allows changes to unordered lists (ul)*/
+/*.dirlist is the CSS container that holds all of the users on the data base so they can all be formatted
+at once.*/
+.dirlist
+{
+	font-family: "Arial Black";
+	position: absolute;
+	top: 200px;
+	left:350px;
+	height: relative;
+	width: 76%;
+	padding:25px;
+	border-style: inset;
+	border-color: #606060;
+	background-color: #8b8b8b;
+	text-align: left;
+}
+/*ul is alrady a predefined style, by calling it here i can change the style for my own benefit*/
 ul
 {
-/*Changes the text to blue*/
-color:blue;
-/*Changes the text font size to 20 pixel(px)*/
-font-size:20px;
+	font-family: "Arial Black";
+	list-style: none;
 }
-/*Allows changes to the h1 tag*/
-h1
+/*The namebar class defines the properties of the bars that give accents to the users to help differentiate between them in the list*/
+.namebar
 {
-	/*Changes the header to red*/
-	color:red;
+	border-style: outset;
+	border-color: #606060;
+	background-color: #A4A4A4;
+	padding: 1px;
 }
+.namebar:hover/*This allows fo the cool feature when you hover over the selection it changes the look of the element.*/
+{
+	border-style: inset;
+	background-color: #313131;
+}
+.name/*this helps with keeping the elements that belong to eachother on the same line, even though i am telling one to algin left and the other right*/
+{
+	float: left
+}
+.mail/*this helps with keeping the elements that belong to eachother on the same line, even though i am telling one to algin left and the other right*/
+{
+	text-align:right;
+}
+

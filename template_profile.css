@@ -51,3 +51,8 @@ navigation bar some character.*/
             border-color: #606060;
             background-color: #8b8b8b;
         }
+                .bar:hover
+        {
+            border-style: inset;
+            background-color: #313131;
+        }

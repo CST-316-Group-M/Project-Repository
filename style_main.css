@@ -7,24 +7,32 @@ Last Updated: 4/20/14
 
 Since this is a modified version of the original file i will be comenting on the changes that i made.
 */	
+
 /* The astric in this file is the css properties for the entire page, this defines the margins and the padding 
 of the page that is linked to it.*/
 * {
 	padding:0px;
 	margin:0px;
 }
+/* The h2 tag has its default formatting but if you are wanting to create your own look you can change the tag formatting so that it looks the way that you want it to.*/
 h2 {
 	font-size: 16px;
 	text-align: center;
 	padding: 0 0 12px 0; 
 }
+/*with the new functions being added to the repo listing we needed to add some formatting to the page so that the functions were not sitting on top of eachother. This applies to the .colab class, .upload_file class, and the .new_dir class*/
 .colab
 {
 	position: absolute;
 	bottom:2px;
-	left: 400px;
+	left: 360px;
 }
-
+.group
+{
+	position: absolute;
+	bottom:2px;
+	left: 475px;
+}
 .upload_file
 {
 	position:abosolute;
@@ -41,10 +49,9 @@ h2 {
 .username
 	{
 		position:absolute;
-		top:65px;
+		top:75px;
 		left:325px;
 	}
-
 /*This is the contatiner that holds everything together in the repository viewer. the changeds that i made to this
 property was that i changed the size of the container so that  */
 #container {
@@ -56,7 +63,7 @@ property was that i changed the size of the container so that  */
 	width: 900px;
 	padding-bottom: 2px;
 }
-
+/* This is all of the defined formatting for the table on the page along with the formatting for each row.*/
 table {
 	background-color: #F3F3F3;
 	border-collapse: collapse;
@@ -115,10 +122,6 @@ tr:hover td {
 tr:hover td a {
 	color: #000;
 }
-
-
-
-
 
 /* icons for file types (icons by famfamfam) */
 
