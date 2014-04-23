@@ -34,6 +34,7 @@
 			<fileset dir=".">
 				<include name="logintest.php"/>
 				<include name="login.php"/>
+				<include name="db_test.php"/>
 			</fileset>
 		</batchtest>
 	</phpunit>
