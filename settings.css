@@ -9,12 +9,38 @@ Last Revise: 4/22/14
 	font-family: "Arial Black";
 	position: absolute;
 	top: 200px;
-	left:350px;
+	left:400px;
 	height: relative;
-	width: relative;
+	width: 375px;
 	padding:25px;
 	border-style: inset;
 	border-color: #606060;
 	background-color: #8b8b8b;
 
+}
+.prof
+{
+	font-family: "Arial Black";
+	position: absolute;
+	top: 200px;
+	left:850px;
+	height: relative;
+	width: relative;
+	padding:25px;
+	border-style: inset;
+	border-color: #606060;
+	background-color: #8b8b8b;	
+}
+.uploadpic
+{
+	font-family: "Arial Black";
+	position: absolute;
+	top: 500px;
+	left:400px;
+	height: relative;
+	width: relative;
+	padding:25px;
+	border-style: inset;
+	border-color: #606060;
+	background-color: #8b8b8b;	
 }

@@ -32,6 +32,8 @@ function getfname(){
 	$name = $fetchy[0];
 	$_SESSION['fname'] = $name;// Assigns the variable $name to the session variable to be later called when needed.
  }
+//if (isset($_POST'checkboxes[]')); 
+
 // Adds pretty filesizes
 function pretty_filesize($file) 
 {
@@ -136,6 +138,7 @@ $indexCount = count($dirArray);
 // Loops through the array of files
 for ($index = 0; $index < $indexCount; $index++) 
 {
+	$file = $dirArray[$index];
     // Decides if hidden files should be displayed, based on query above.
     if (substr("$dirArray[$index]", 0, 1) != $hide || ($currdir != '.' && $dirArray[$index] == "..")) {
 
@@ -250,7 +253,7 @@ for ($index = 0; $index < $indexCount; $index++)
             <td><a href='$namehref'>$extn</a></td>
             <td sorttable_customkey='$sizekey'><a href='$namehref'>$size</a></td>
             <td sorttable_customkey='$timekey'><a href='$namehref'>$modtime</a></td>" .
-			'<td align="center"><form action="" method=""> <input name="checkbox[]" type="checkbox" id="checkbox[]" value=""></form></td>' . "</tr>");
+			'<td align="center"><form action="rm.php" method="post"> <input name="checkbox[]" type="checkbox" class="select" value="'.$name.'"><input type="submit" value="delete"/></form></td>' . "</tr>");
     }
 }
 

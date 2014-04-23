@@ -7,28 +7,22 @@ Description: Displays folders you share with other people AND folders shared wit
 <?php
 	//session_start() creates a session or resumes the current one based on a session identifier passed via a GET or POST request, or passed via a cookie.
 
-    session_start();
-	$user = $_SESSION['email'];
-	$ID = $_SESSION['ID'];
-	$email = $user;
-    $arr = explode("@", $email);            //php explode function splits strings
-    $uname= $arr[0];
-    getfname();   // This function gets the first name of the user - Jason
-    $fname = $_SESSION['fname'];
-	//function int getGID($someID)
+    		session_start();
+		$user = $_SESSION['email'];
+		$ID = $_SESSION['ID'];
+		$fname = $_SESSION['fname'];
+		$email = $user;
+    		$arr = explode("@", $email);            //php explode function splits strings
+    		$uname= $arr[0];
+    		getfname();   // This function gets the first name of the user - Jason
 
+    		///////////////////////////////////// MySql Queries /////////////////////////////////
 		$con = mysqli_connect("localhost","webauth","webauth");
 		$sel = mysqli_select_db($con, 'CST316');
 		$find = "select groupID from groups where ownerID = '".$ID."' or memberID = '".$ID."'";
 		$query = mysqli_query($con, $find);
 		$fetch = mysqli_fetch_array($query);	
-			/*
-				echo "<br>";
-				echo "Group ID: " . $fetch['groupID'];
-				//$GID = $fetch['groupID'];		
-				*/				
-		//}	
-		echo $GID;
+		$GID = $fetch['groupID'];		
 	
 	///////////////////////////////////Display///////////////////////////////////////////
 //This function queries phpmyadmin so it can pull the First name of the user in the data base.
@@ -68,7 +62,7 @@ else
 {
     $currdir = urldecode($_SERVER['QUERY_STRING']);
 }
-if ($currdir == "./users/$GID") 
+if ($currdir == "./groups/$GID") 
  
     $label = "Root";
 else 
@@ -109,12 +103,7 @@ else
         
         </div>
     <img class="user_pic" src="..\users\<?=$uname?>\.set\<?=$uname?>.png">
-        <div class="grp">
-            The user is: <?=$user?><br>
-            Their ID is: <?=$ID?><br><br>
-
-            Group ID:  <?$fetch['groupID'];?>
-        </div>
+      
         <div id="container">
             <table class="sortable">
                 <thead>
@@ -290,9 +279,39 @@ for ($index = 0; $index < $indexCount; $index++)
                 </tbody>
             </table>
 
-        <!-- <h2><?php echo("<a href='$ahref'>$atext hidden files</a>"); ?></h2> -->
+<div class="upload_file">
+<form id="uploadfile" action="upload_file.php" method="post"
+        enctype="multipart/form-data">
+        <label for="file">Filename:</label>
+        <input type="file" name="file" id="file">
+        <input type="submit" name="submit" value="Submit"></form>
+</div>
+
+
+<div class="new_dir">
+<form action="index_main.php" method="post">
+<input type="text" name="newdir">
+<input type="submit" name="submit1" value="New Folder"></form>
+</div>
+
+<!--
+<div class="colab">
+<form action="addgroup.php" method="post">
+<input type="submit" name="submit2" value="Add Collaborators!"></form>
+</div>
+
+<div class="group">
+<form action="showgroup.php" method="post">
+<input type="submit" name="submit3" value="view group folders"></form>
+</div>
+-->
+
 </div>   
     </body>
 </html>
+<?php
+    $_SESSION['upload'] = $currdir;
+    $_SESSION['currentdir'] = $currdir;
+    ?>
 
     

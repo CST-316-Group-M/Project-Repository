@@ -9,9 +9,9 @@ Last Updated: 4/22/14
 
 //session_start() creates a session or resumes the current one based on a session identifier passed via a GET or POST request, or passed via a cookie.
 session_start();
-$uname = $_SESSION['email'];
+$uname1 = $_SESSION['email'];
 $fname = $_SESSION['fname'];
-$arr = explode("@", $uname);			//php explode function splits strings
+$arr = explode("@", $uname1);			//php explode function splits strings
 $uname= $arr[0];
 
 
@@ -47,6 +47,24 @@ else
     $path = explode('/', $currdir);
     $label = $path[count($path)-1]; 
 }
+
+
+//connect to database
+$con=mysqli_connect("localhost","webauth","webauth","CST316");
+// Check connection
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+//select the user to get info from
+$result = mysqli_query($con,"SELECT * FROM users WHERE email='". $uname1 ."'");
+//store the result in variable $row
+$row = mysqli_fetch_array($result)
+
+
+
+
+
 ?>
 <!--This begins the HTML Version of the page.-->
 <!doctype html>
@@ -80,43 +98,20 @@ else
        <img class="user_pic" src="..\users\<?=$uname?>\.set\<?=$uname?>.png">
       <div class="Header"><?=$fname?></div>
       <div class="education"> 
-
-    <h1><u>EDUCATION</u></h1>
-    <h4>Bachelor of Science in Applied Computer Science
-    <br>Arizona State University Polytechnic, Mesa, Arizona
-    <br>Expected Graduation Date: May 2015</h4>
-  
-    <h3>Certificate in Cisco Networking</h3>
- 
-    <ul>
-    <li>Cisco Certified Entry Networking Technician</li>
-    <li>Cisco Certified Network Associate</li>
-    <li>Cisco Certified Network Associate Security</li>
-    <li>Cisco Certified Network Associate Voice</li>
-    <li>Cisco Certified Network Professional</li>
-    </ul>
-
-    <h4>Expected Graduation Date: June 2014</h4>
+<h1><u>Education</u><h1>
+<td>
+<font face="Arial, Helvetica, sans-serif"><?php echo nl2br($row['education']); // displays the users education?></font>
+</td>
+<br>
     </div>
+    
     <div class="work">
-      <h1><u>PROFESSIONAL EXPERIENCE</u></h1>
-      <h4>Support Technician, Arizona State University, Mesa, Arizona                     <br>September 2010 - Present</h4>
-        <ul><li> Assisted faculty and teachers in technical troubleshooting on a daily basis.</li>
-        <li>Set up video conferences and prepped classrooms for classes and special events.</li>
-        <li>Imaged both Macintosh and Windows Operating Systems and installed software.</li>
-      </ul>
-      <h4>Customer Service/Data Entry, Kevin Smith State Farm, Goodyear, Arizona              <br>May 2004 - Present</h4>
-        <ul><li>Reconciled and balanced the business’s accounting programs.</li>
-        <li>Assisted in assorted marketing programs and booth events to gain new clients.</li>
-      </ul>
-      <h4>Sales/ Cashier, Radio Shack, Mesa, Arizona                                <br>February 2010 - September 2010</h4>
-        <ul><li>Managed the store while it was between management.</li>
-        <li>Used various selling techniques to meet monthly quotas.</li>
-        <li>Provided knowledge and support to customers on a daily basis.</li>
-        <ul>
+      <h1><u>Professional Experience</u><h1>
+<td>
+<font face="Arial, Helvetica, sans-serif"><?php echo nl2br($row['experience']); // displays the users work experience?></font>
+</td>
     </div>
-     <div class="bboxed"><center><font size="2">CST 316 Group M Project Managment Assignment<br>Last Updated: March 1st, 2014<br>Project Owner: Dr. Kevin Gary</font></center></div>
-       <div class="bboxed2"> </div>
+
         <div id="container"><!--This is the container that allows me to be able to put multiple functions in the same area as the repo table.-->
             <table class="sortable">
                 <thead>

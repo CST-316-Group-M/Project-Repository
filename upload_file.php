@@ -10,6 +10,8 @@ a user is in.
 session_start();
 $uname = $_SESSION['email'];
 $uploaddir = $_SESSION['upload'];
+$arr = explode("@", $uname);			//php explode function splits strings
+$uname= $arr[0];
 
 function uploadFile ($directory) {
 	$test="/";
@@ -29,11 +31,13 @@ function uploadFile ($directory) {
 		  {
 		  move_uploaded_file($_FILES["file"]["tmp_name"],
 		  $directory . $test . $_FILES["file"]["name"]);	
-		  echo $filename . "has successfully been uploaded!";
+		  echo $filename . " has successfully been uploaded!";
+		  chmod ($directory . $test . $_FILES["file"]["name"], 0755); //added chmod to set for group permissions - Jason
 
 		  }
 		}
 	}
+	
 
 uploadFile($uploaddir);
 

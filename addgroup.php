@@ -14,6 +14,7 @@ group IDs
 	<?php
 	session_start();
 	$owner_email = $_SESSION['email'];
+	$id = $_SESSION['ID'];
 	
 	///////////////////////////////////// Database Connection and Selection ////////////////
 	$con = mysqli_connect("localhost","webauth","webauth");
@@ -67,29 +68,25 @@ group IDs
 			//echo "Owner ID: " . $ownerID;
 		}
 		
-		//////////////////////////////////////////// Assign a Group ID /////////////////////////////////////
-		$maxGID = "select max(groupID) as max from groups";
-		$querymax = mysqli_query($con, $maxGID);
-		if(!$querymax) {
-			echo "Error number " . mysqli_errno($con);
+
+		//////////////////////////////////////////// Get Max ID Information //////////////////////////////////////
+		$getmax = "select max(groupID) as max from groups;";
+		$queryMaxID = mysqli_query($con, $getmax);
+		if(!$queryMaxID) {
+			echo "(Getting Max ID)Error number " . mysqli_errno($con);
 			echo "<br>";
 		}
 
-		$row2 = mysqli_fetch_array($querymax);
-		if(!$row2) {
-			echo "Error number " . mysqli_errno($con);
-			echo "<br>";	
-			
+		$rowMax = mysqli_fetch_array($queryMaxID);
+		if(!$rowMax) {
+			echo "(MAX ID)Error number " . mysqli_errno($con);
+			echo "<br>";		
 		}
 		else {
-			$max = $row2['max'];
-			//echo "Current Max GID: " . $max;
-			//echo "<br>";
-			$max = $max + 1;
-			echo $max;
+			$max = $rowMax['max'];
 			
 		}
-		
+
 		//////////////////////////////////////////// Find Member Information //////////////////////////////////////
 		$group = $_POST['group'];
 		$creategroup = 	"select id, fname, lname from users where email = '".$group."'"; //can return name, etc if needed
@@ -112,6 +109,8 @@ group IDs
 			$member_id = $row[0];
 			$f = $row[1];
 			$l = $row[2];
+			$max = $max + 1;
+			echo $max;
 			$addmember = "insert into groups(groupID, ownerID, memberID) values('".$max."', '".$ownerID."','".$member_id."')";
 			$query2 = mysqli_query($con, $addmember);
 			if(!$query2) {
@@ -120,6 +119,8 @@ group IDs
 				}
 		
 			else {
+				
+				$mkgroupdir = mkdir("/var/www/groups/$max/", 0777);
 				$ndir = $_POST['dir'];
 				echo $f . " " . $l . " has been added as a collaborator!";
 				$makedir = mkdir("/var/www/groups/$max/$ndir/", 0777);	

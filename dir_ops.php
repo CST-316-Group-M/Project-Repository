@@ -10,25 +10,16 @@ Description: functions to create and delete folders/files
 	session_start();
 	$current = $_SESSION['currentdir'];
 	$newdir = $_SESSION['newdir'];
-	//$newdir = "test";
-	
-	
-	echo "name of current dir: " . $current;
-	echo "<br/>";
-	echo "name of new dir: " . $newdir;
-	echo "<br/>";
 	if (!isset($_SESSION['newdir'])) {
 		echo "newdir session variable not set.";
 	}
 	createDir($current, $newdir);
 	$_SESSION['newdir'] = null;
 	function createDir($d, $n) {
-		echo "I am in the function at least";
 		$new_d = $d . "/" . $n;
-		echo $new_d;
 		if(!file_exists($new_d)) { //!exists is causing issues. could be the verion of PHP we have. file_exists works better for now. - Jason
-			echo $new_d;
 			mkdir($new_d, 0777);	//permissions should change
+			echo "Directory created successfully!";
 		}
 		else {
 			echo "Cannot create; directory with that name already exists.";

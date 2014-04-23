@@ -28,16 +28,25 @@
 		// will be implemented
 		function removeFile() {
 			$uname;
-			$oldDest = "../users/$uname/old";
-			//get file selection name (may need code borrowed from listing directories)
-			//$uname = (filename)
-			if (check file within old database folder)
-			{ bool unlink ( string $uname); }
-			else {	bool copy ( string $uname , string $oldDest);
-					bool unlink (string $oldDest); }
+			$oldDest = "../users/$uname/.old";
+			bool copy ( string $uname , string $oldDest);
+			bool unlink (string $oldDest); }
 		
 			
 		}
 	}
-
+	foreach ($delete as $id => $val) {
+		if($val=='checked')
+		
+$fpath = "../users/$uname/";
+$old = "../users/$uname/.old";
+foreach ($_POST['checkbox[]'] as $file) {
+    if(file_exists($path_to_folder . $file))) {
+        unlink($path_to_folder . $file); 
+    }
+    elseif(is_dir($file)) {
+        rmdir($file); // or system("rm -rf " . escapeshellarg($dir)); 
+    }
+}
+echo "Files deleted successfully.";
 ?>
