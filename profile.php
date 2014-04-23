@@ -1,8 +1,8 @@
 <!--
 Author: Jacob Reber
-Last Revised: 4/14/14
+Last Revised: 4/23/14
 
-This is php file to display the user profile.
+This is php file for the user profile.
 -->
 <!DOCTYPE html>
 
@@ -14,6 +14,7 @@ This is php file to display the user profile.
 
 
 <?php
+//connect to database
 $con=mysqli_connect("localhost","jake","drag7388","my_db");
 // Check connection
 if (mysqli_connect_errno())
@@ -35,8 +36,6 @@ $row = mysqli_fetch_array($result)
 <font face="Arial, Helvetica, sans-serif"><?php echo nl2br($row['education']); // displays the users education?></font>
 </td>
 <br>
-Edits: <textarea name="comments" id="comments" cols="25" rows="3"></textarea>
-<p><input type="submit" name="submit" value="Edit Info"></p>
 </div>
 
 <div class="work">
@@ -44,9 +43,9 @@ Edits: <textarea name="comments" id="comments" cols="25" rows="3"></textarea>
 <td>
 <font face="Arial, Helvetica, sans-serif"><?php echo nl2br($row['experience']); // displays the users work experience?></font>
 </td>
-<p><input type="submit" name="submit" value="Edit Info"></p>
 </div>
-
+<form method="post" action="editprofile.php">
+<p><input type="submit" name="submit" value="Edit Info"></p>
 
 <?php
 mysqli_close($con);
